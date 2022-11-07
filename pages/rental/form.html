@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationRentalForm.js"></script>
     <title>Rbike - rental bike</title>
 </head>
 <body>
@@ -22,17 +24,17 @@
     </nav>
     <main>
         <h2>Nowe wypożyczenie</h2>
-        <form class="form">
+        <form class="form" novalidate onsubmit="return validateForm();">
             <label for="personData">Imię i nazwisko: <span class="symbol-required">*</span></label>
             <select name="personData" id="personData">
-                <option>--Wybierz osobę wypożyczającą--</option>
+                <option value="">--Wybierz osobę wypożyczającą--</option>
                 <option value="1">Jan Kowalski</option>
                 <option value="2">Anna Nowak</option>
             </select>
             <span id="errorPersonData" class="errors-text"></span>
             <label for="bikeData">Model i marka: <span class="symbol-required">*</span></label>
             <select name="bikeData" id="bikeData">
-                <option>--Wybierz wypożyczony rower--</option>
+                <option value="">--Wybierz wypożyczony rower--</option>
                 <option value="1">Specialized Rockhopper</option>
                 <option value="2">Unibike Indiana</option>
                 <option value="3">Cube SL Road</option>
@@ -45,7 +47,7 @@
             <input type="date" name="dateTo" id="dateTo" required>
             <span id="errorDateTo" class="errors-text"></span>
             <div class="form-buttons">
-                <p id="errorsSummary"></p>
+                <p id="errorsSummary" class="errors-text"></p>
                 <input type="submit" value="Dodaj" class="form-button-submit">
                 <a href="list.html" class="form-button-cancel">Anuluj</a>
              </div>

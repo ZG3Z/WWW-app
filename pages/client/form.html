@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationClientForm.js"></script>
     <title>Rbike - rental bike</title>
 </head>
 <body>
@@ -22,7 +24,7 @@
     </nav>
     <main>
         <h2>Nowy klient</h2>
-        <form class="form">
+        <form class="form" novalidate onsubmit="return validateForm();">
             <label for="firstName">Imię: <span class="symbol-required">*</span></label>
             <input type="text" name="firstName" id="firstName" placeholder="2-30 znaków" required>
             <span id="errorFirstName" class="errors-text"></span>
@@ -36,7 +38,7 @@
             <input type="email" name="email" id="email" placeholder="np. nazwa@domena.pl">
             <span id="errorEmail" class="errors-text"></span>
             <div class="form-buttons">
-                <p id="errorsSummary"></p>
+                <p id="errorsSummary" class="errors-text"></p>
                 <input type="submit" value="Dodaj" class="form-button-submit">
                 <a href="list.html" class="form-button-cancel">Anuluj</a>
             </div>
