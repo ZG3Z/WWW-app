@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Rbike - rental bike</title>
+</head>
+<body>
+    <header>
+        <h1>RBike</h1>
+        <img src="../../images/logo.png" alt="RBike Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="../client/list.html">Klienci</a></li>
+            <li><a href="../bike/list.html" class="active">Rowery</a></li>
+            <li><a href="../rental/list.html">Wypożyczenia</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Nowy rower</h2>
+        <form class="form" novalidate onsubmit="return validateForm();">
+            <label for="brand">Marka: <span class="symbol-required">*</span></label>
+            <input type="text" name="brand" id="brand" placeholder="2-30 znaków"required>
+            <span id="errorBrand" class="errors-text"></span>
+            <label for="model">Model: <span class="symbol-required">*</span></label>
+            <input type="text" name="model" id="model" placeholder="2-30 znaków" required>
+            <span id="errorModel" class="errors-text"></span>
+            <label for="colour">Kolor: <span class="symbol-required">*</span></label>
+            <input type="text" name="colour" id="colour" placeholder="2-30 znaków" required>
+            <span id="errorColour" class="errors-text"></span>
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input type="submit" value="Dodaj" class="form-button-submit">
+                <a href="list.html" class="form-button-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+    <footer>
+        Zuzanna Gez (s23570)
+    </footer>
+</body>
+</html>

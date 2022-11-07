@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Rbike - rental bike</title>
+</head>
+<body>
+    <header>
+        <h1>RBike</h1>
+        <img src="../../images/logo.png" alt="RBike Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="../client/list.html">Klienci</a></li>
+            <li><a href="../bike/list.html">Rowery</a></li>
+            <li><a href="../rental/list.html" class="active">Wypożyczenia</a></li>
+        </ul>
+    </nav>    
+    <main>
+        <h2>Nowe wypożyczenie</h2>
+        <form class="form">
+            <label for="personData">Imię i nazwisko: <span class="symbol-required">*</span></label>
+            <select name="personData" id="personData" class="error-input">
+                <option>--Wybierz osobę wypożyczającą--</option>
+                <option value="1">Jan Kowalski</option>
+                <option value="2">Anna Nowak</option>
+            </select>
+            <span id="errorPersonData" class="errors-text">Pole jest wymagane</span>
+            <label for="bikeData">Model i marka: <span class="symbol-required">*</span></label>
+            <select name="bikeData" id="bikeData" class="error-input">
+                <option>--Wybierz wypożyczony rower--</option>
+                <option value="1">Specialized Rockhopper</option>
+                <option value="2">Unibike Indiana</option>
+                <option value="3">Cube SL Road</option>
+            </select>
+            <span id="errorBikeData" class="errors-text">Pole jest wymagane</span>
+            <label for="dateFrom">Data od: <span class="symbol-required">*</span></label>
+            <input type="date" name="dateFrom" id="dateFrom" class="error-input" required>
+            <span id="errorDateFrom" class="errors-text">Pole jest wymagane</span>
+            <label for="dateTo">Data do: <span class="symbol-required">*</span></label>
+            <input type="date" name="dateTo" id="dateTo" class="error-input" required>
+            <span id="errorDateTo" class="errors-text">Pole jest wymagane</span>
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text">Formularz zawiera błędy</p>
+                <input type="submit" value="Dodaj" class="form-button-submit">
+                <a href="list.html" class="form-button-cancel">Anuluj</a>
+            </div>
+       </form>
+    </main>
+    <footer>
+        Zuzanna Gez (s23570)
+    </footer>
+</body>
+</html>
