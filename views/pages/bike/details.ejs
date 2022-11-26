@@ -1,0 +1,49 @@
+<%- include('../../fragments/header.ejs')%>
+
+    <main>
+        <h2>Szczegóły roweru</h2>
+        <form class="form"> 
+            <label for="brand">Marka: </label>
+            <input type="text" name="brand" id="brand" value="Specialized" disabled>
+            <span id="errorBrand" class="errors-text"></span>
+            <label for="model">Model: </label>
+            <input type="text" name="model" id="model" value="Rockhopper" disabled>
+            <span id="errorModel" class="errors-text"></span>
+            <label for="colour">Kolor: </label>
+            <input type="text" name="colour" id="colour" value="Czarny" disabled>
+            <span id="errorColour" class="errors-text"></span>
+            <div class="form-buttons">
+                <p><a href="form-edit.html" class="list-actions-button-edit">Edytuj</a></p>
+            </div>
+       </form>
+       <h2>Szczegóły wypożyczeń</h2>
+       <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Data od</th>
+                    <th>Data do</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jan</td>
+                    <td>Kowalski</td>
+                    <td>2022-03-04</td>
+                    <td>2022-03-06</td>
+                </tr>
+                <tr>
+                    <td>Anna</td>
+                    <td>Nowak</td>
+                    <td>2022-04-20</td>
+                    <td>2022-05-12</td>
+                </tr>
+            </tbody>
+        </table>
+       <div>
+       <p><a href="list.html" class="list-actions-button-details">Powrót</a></p>
+    </div>
+    </main>
+
+<%- include('../../fragments/footer.ejs')%>

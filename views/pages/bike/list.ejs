@@ -1,0 +1,74 @@
+<%- include('../../fragments/header.ejs')%>
+
+    <main>
+        <h2>Lista rowerów</h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Kolor</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Specialized</td>
+                    <td>Rockhopper</td>
+                    <td>Czarny</td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="details.html" class="list-actions-button-details">Szczegóły</a>
+                            </li>
+                            <li>
+                                <a href="form-edit.html" class="list-actions-button-edit">Edytuj</a>
+                            </li>
+                            <li>
+                                <a href="" class="list-actions-button-delete">Usuń</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Unibike</td>
+                    <td>Indiana</td>
+                    <td>Czerwony</td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="details.html" class="list-actions-button-details">Szczegóły</a>
+                            </li>
+                            <li>
+                                <a href="form-edit.html" class="list-actions-button-edit">Edytuj</a>
+                            </li>
+                            <li>
+                                <a href="" class="list-actions-button-delete">Usuń</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cube</td>
+                    <td>SL Road</td>
+                    <td>Niebieski</td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="details.html" class="list-actions-button-details">Szczegóły</a>
+                            </li>
+                            <li>
+                                <a href="form-edit.html" class="list-actions-button-edit">Edytuj</a>
+                            </li>
+                            <li>
+                                <a href="" class="list-actions-button-delete">Usuń</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="form.html" class="button-add">Dodaj nowy rower</a></p>
+    </main>
+
+<%- include('../../fragments/footer.ejs')%>
