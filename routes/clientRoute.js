@@ -4,6 +4,6 @@ const clientControler = require('../controllers/clientControllers');
 
 router.get('/', clientControler.showClientList);
 router.get('/add', clientControler.showAddClientForm);
-router.get('/details/:clientId', clientControler.showClientList);
+router.get('/details/:clientId', clientControler.showClientDetails);
 
 module.exports = router;

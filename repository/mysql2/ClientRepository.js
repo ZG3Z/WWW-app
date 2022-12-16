@@ -64,7 +64,7 @@ exports.createClient = (newClientData) => {
     const name = newClientData.Name;
     const surname = newClientData.Surname;
     const telephone = newClientData.Telephone;
-    const email = newClientData.Email;
+    const email = newClientData.Email ? newClientData.Email : null;
 
     const sql = 'INSERT into Client (Name, Surname, Telephone, Email) VALUES (?, ?, ?, ?)';
 
