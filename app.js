@@ -14,6 +14,12 @@ var clientApiController = require('./routes/api/ClientApiRoute');
 var bikeApiController = require('./routes/api/BikeApiRoute');
 var rentalApiController = require('./routes/api/RentalApiRoute');
 
+const sequelizeInit = require('./config/sequelize/init');
+sequelizeInit()
+  .catch(err => {
+    console.log(err);
+  });
+
 var app = express();
 
 // view engine setup
@@ -27,7 +33,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-
 app.use('/clients', clientRouter);
 app.use('/bikes', bikeRouter);
 app.use('/rentals', rentalRouter);

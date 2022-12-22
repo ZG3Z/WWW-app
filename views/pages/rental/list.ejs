@@ -12,83 +12,21 @@
                     <th>Akcje</th>
                 </tr>
             </thead>
-            <tbody>
+            <% for (let rental of rentals) { %>    
                 <tr>
-                    <td>Jan Kowalski</td>
-                    <td>Specialized Rockhopper</td>
-                    <td>2022-03-04</td>
-                    <td>2022-03-06</td>
+                    <td><%=rental.Client.Name%> <%=rental.Client.Surname%></td>
+                    <td><%=rental.Bike.Brand%> <%=rental.Bike.Model%></td>
+                    <td><%= rental.Date_from.toISOString().split('T')[0] %></td>
+                    <td><%= rental.Date_to.toISOString().split('T')[0] %></td>
                     <td>
                         <ul class="list-actions">
-                            <li>
-                                <a href="/rentals/details/1" class="list-actions-button-details">Szczegóły</a>
-                            </li>
-                            <li>
-                                <a href="form-edit.html" class="list-actions-button-edit">Edytuj</a>
-                            </li>
-                            <li>
-                                <a href="" class="list-actions-button-delete">Usuń</a>
-                            </li>
+                            <li><a href="/rentals/details/<%=rental.ID_rental%>" class="list-actions-button-details">Szczegóły</a></li>
+                            <li><a href="/rentals/edit/<%=rental.ID_rental%>" class="list-actions-button-edit">Edytuj</a></li>
+                            <li><a href="/rentals/delete/<%=rental.ID_rental%>" class="list-actions-button-delete">Usuń</a></li>
                         </ul>
                     </td>
                 </tr>
-                <tr>
-                    <td>Anna Nowak</td>
-                    <td>Specialized Rockhopper</td>
-                    <td>2022-04-20</td>
-                    <td>2022-05-12</td>
-                    <td>
-                        <ul class="list-actions">
-                            <li>
-                                <a href="details.html" class="list-actions-button-details">Szczegóły</a>
-                            </li>
-                            <li>
-                                <a href="form-edit.html" class="list-actions-button-edit">Edytuj</a>
-                            </li>
-                            <li>
-                                <a href="" class="list-actions-button-delete">Usuń</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jan Kowalski</td>
-                    <td>Unibike Indiana</td>
-                    <td>2022-05-10</td>
-                    <td>2022-06-04</td>
-                    <td>
-                        <ul class="list-actions">
-                            <li>
-                                <a href="details.html" class="list-actions-button-details">Szczegóły</a>
-                            </li>
-                            <li>
-                                <a href="form-edit.html" class="list-actions-button-edit">Edytuj</a>
-                            </li>
-                            <li>
-                                <a href="" class="list-actions-button-delete">Usuń</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jan Kowalski</td>
-                    <td>Cube SL Road</td>
-                    <td>2022-07-10</td>
-                    <td>2022-07-24</td>
-                    <td>
-                        <ul class="list-actions">
-                            <li>
-                                <a href="details.html" class="list-actions-button-details">Szczegóły</a>
-                            </li>
-                            <li>
-                                <a href="form-edit.html" class="list-actions-button-edit">Edytuj</a>
-                            </li>
-                            <li>
-                                <a href="" class="list-actions-button-delete">Usuń</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
+            <% } %>    
             </tbody>
        </table>
     <p><a href="/rentals/add" class="button-add">Dodaj nowe wypożyczenie</a></p>

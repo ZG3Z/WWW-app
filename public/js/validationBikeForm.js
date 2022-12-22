@@ -1,7 +1,7 @@
 function validateForm(){
-    const brandInput = document.getElementById('brand');
-    const modelInput = document.getElementById('model');
-    const colourInput = document.getElementById('colour');
+    const brandInput = document.getElementById('Brand');
+    const modelInput = document.getElementById('Model');
+    const colourInput = document.getElementById('Colour');
 
     const errorBrand = document.getElementById('errorBrand');
     const errorModel = document.getElementById('errorModel');

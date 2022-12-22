@@ -1,23 +1,73 @@
 <%- include('../../fragments/header.ejs')%>
 
     <main>
-        <h2>Nowy rower</h2>
-        <form class="form" novalidate onsubmit="return validateForm();">
-            <label for="brand">Marka: <span class="symbol-required">*</span></label>
-            <input type="text" name="brand" id="brand" placeholder="2-60 znaków"required>
-            <span id="errorBrand" class="errors-text"></span>
-            <label for="model">Model: <span class="symbol-required">*</span></label>
-            <input type="text" name="model" id="model" placeholder="2-60 znaków" required>
-            <span id="errorModel" class="errors-text"></span>
-            <label for="colour">Kolor: <span class="symbol-required">*</span></label>
-            <input type="text" name="colour" id="colour" placeholder="2-30 znaków" required>
-            <span id="errorColour" class="errors-text"></span>
+        <script type="application/javascript" src="/js/validationCommon.js"></script>
+        <script type="application/javascript" src="/js/validationBikeForm.js"></script>
+        <h2><%= pageTitle%></h2>
+        <form class="form" method="post" action="<%=formAction%>" novalidate><!--onsubmit="return validateForm();" -->
+            <input type="hidden" name="ID_bike" value="<%= bike.ID_bike %>">
+            <label for="Brand">Marka: <span class="symbol-required">*</span></label>
+            <input type="text" name="Brand" id="Brand" placeholder="2-60 znaków" value="<%= bike.Brand %>" 
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorBrand" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('Brand'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('Brand')).message %>
+                <% } %>
+            </span>
+            <label for="Model">Model: <span class="symbol-required">*</span></label>
+            <input type="text" name="Model" id="Model" placeholder="2-60 znaków" value="<%= bike.Model %>" 
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorModel" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('Model'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('Model')).message %>
+                <% } %>
+            </span>
+            <label for="Colour">Kolor: <span class="symbol-required">*</span></label>
+            <input type="text" name="Colour" id="Colour" placeholder="2-30 znaków" value="<%= bike.Colour %>" 
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+            <span id="errorColour" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('Colour'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('Colour')).message %>
+                <% } %>
+            </span>
+
+            <% if (formMode == 'showDetails') { %>
+                <div>
+                    <a class="list-actions-button-edit" href="/bikes/edit/<%=bike.ID_bike%>">Edytuj</a>
+                </div>
+            <% } %>
             <div class="form-buttons">
                 <p id="errorsSummary" class="errors-text"></p>
-                <input type="submit" value="Dodaj" class="form-button-submit">
-                <a href="list.html" class="form-button-cancel">Anuluj</a>
+                <% if (formMode != 'showDetails') { %>
+                    <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                    <a class="form-button-cancel" href="/bikes">Anuluj</a>
+                <% } else { %>
+                    <a class="form-button-cancel" href="/bikes">Powrót</a>
+                <% } %>
             </div>
         </form>
+        <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+            <h2>Szczegóły wypożyczeń</h2>
+            <table class="table-list">
+                <thead>
+                    <tr>
+                        <th>Dane osoby wypożyczającej</th>
+                        <th>Data od</th>
+                        <th>Data do</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let rental of bike.Rentals) { %>
+                        <tr>
+                            <td><a href="/clients/details/<%= rental.Client.ID_client %>"><%= rental.Client.Name + ' ' + rental.Client.Surname %></a></td>
+                            <td><%= rental.Date_from.toISOString().split('T')[0] %></td>
+                            <td><%= rental.Date_to.toISOString().split('T')[0] %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } %>
     </main>
+ 
 
 <%- include('../../fragments/footer.ejs')%>

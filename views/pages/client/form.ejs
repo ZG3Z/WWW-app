@@ -1,26 +1,106 @@
-<%- include('../../fragments/header.ejs')%>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rbike - rental bike</title>
 
-    <main>
-        <h2>Nowy klient</h2>
-        <form class="form" novalidate onsubmit="return validateForm();">
-            <label for="firstName">Imię: <span class="symbol-required">*</span></label>
-            <input type="text" name="firstName" id="firstName" placeholder="2-30 znaków" required>
-            <span id="errorFirstName" class="errors-text"></span>
-            <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
-            <input type="text" name="lastName" id="lastName" placeholder="2-30 znaków" required>
-            <span id="errorLastName" class="errors-text"></span>
-            <label for="telephone">Telefon: <span class="symbol-required">*</span></label>
-            <input type="text" name="telephone" id="telephone" placeholder="+48 XXX XXX XXX"required>
-            <span id="errorTelephone" class="errors-text"></span>
-            <label for="email">E-mail: </label>
-            <input type="email" name="email" id="email" placeholder="np. nazwa@domena.pl">
-            <span id="errorEmail" class="errors-text"></span>
-            <div class="form-buttons">
-                <p id="errorsSummary" class="errors-text"></p>
-                <input type="submit" value="Dodaj" class="form-button-submit">
-                <a href="list.html" class="form-button-cancel">Anuluj</a>
-            </div>
-       </form>
-    </main>
-   
-<%- include('../../fragments/footer.ejs')%>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>RBike</h1>
+            <img src="/img/logo.png" alt="RBike Logo">
+        </header>
+        <nav>
+            <ul>
+                <li><a href="/" class="<%- navLocation == "mainNav" ? 'active' : ''%>">Strona główna</a></li>
+                <li><a href="/clients" class="<%- navLocation == "clientNav" ? 'active' : ''%>">Klienci</a></li>
+                <li><a href="/bikes" class="<%- navLocation == "bikeNav" ? 'active' : ''%>">Rowery</a></li>
+                <li><a href="/rentals" class="<%- navLocation == "rentalNav" ? 'active' : ''%>">Wypożyczenia</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <script type="application/javascript" src="/js/validationCommon.js"></script>
+            <script type="application/javascript" src="/js/validationClientForm.js"></script>
+            <h2><%= pageTitle%></h2>
+            <form class="form" method="post" action="<%=formAction%>" novalidate><!--onsubmit="return validateForm();" -->
+                <input type="hidden" name="ID_client" value="<%= client.ID_client %>">
+                <label for="Name">Imię: <span class="symbol-required">*</span></label>
+                <input type="text" name="Name" id="Name" placeholder="2-30 znaków" value="<%= client.Name %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorName" class="errors-text">
+                    <% if (validationErrors.find(e=> e.path.includes('Name'))) { %>
+                        <%= validationErrors.find(e=> e.path.includes('Name')).message %>
+                    <% } %>
+                </span>
+                <label for="Surname">Nazwisko: <span class="symbol-required">*</span></label>
+                <input type="text" name="Surname" id="Surname" placeholder="2-30 znaków" value="<%= client.Surname %>" 
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorSurname" class="errors-text">
+                    <% if (validationErrors.find(e=> e.path.includes('Surname'))) { %>
+                        <%= validationErrors.find(e=> e.path.includes('Surname')).message %>
+                    <% } %>
+                </span>
+                <label for="Telephone">Telefon: <span class="symbol-required">*</span></label>
+                <input type="text" name="Telephone" id="Telephone" placeholder="+48 XXX XXX XXX" value="<%= client.Telephone %>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorTelephone" class="errors-text">
+                    <% if (validationErrors.find(e=> e.path.includes('Telephone'))) { %>
+                        <%= validationErrors.find(e=> e.path.includes('Telephone')).message %>
+                    <% } %>
+                </span>
+                <label for="Email">E-mail: <span class="symbol-required">*</span></label>
+                <input type="text" name="Email" id="Email" placeholder="np. nazwa@domena.pl" value="<%= client.Email%>"
+                    <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                <span id="errorEmail" class="errors-text">
+                    <% if (validationErrors.find(e=> e.path.includes('Email'))) { %>
+                        <%= validationErrors.find(e=> e.path.includes('Email')).message %>
+                    <% } %>
+                </span>
+
+
+                <% if (formMode == 'showDetails') { %>
+                    <div>
+                        <a class="list-actions-button-edit" href="/clients/edit/<%=client.ID_client%>">Edytuj</a>
+                    </div>
+                <% } %>
+                <div class="form-buttons">
+                    <p id="errorsSummary" class="errors-text"></p>
+                    <% if (formMode != 'showDetails') { %>
+                        <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                        <a class="form-button-cancel" href="/clients">Anuluj</a>
+                    <% } else { %>
+                        <a class="form-button-cancel" href="/clients">Powrót</a>
+                    <% } %>
+                </div>
+            </form>
+            <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+                <h2>Szczegóły wypożyczeń</h2>
+                <table class="table-list">
+                    <thead>
+                        <tr>
+                            <th>Dane wypożyczonego roweru</th>
+                            <th>Data od</th>
+                            <th>Data do</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let rental of client.Rentals) { %>
+                            <tr>
+                                <td><a href="/bikes/details/<%= rental.Bike.ID_bike %>"><%= rental.Bike.Brand + ' ' + rental.Bike.Model %></a></td>
+                                <td><%= rental.Date_from.toISOString().split('T')[0] %></td>
+                                <td><%= rental.Date_to.toISOString().split('T')[0] %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <% } %>
+        </main>
+
+        <footer>
+            Zuzanna Gez - s23570
+        </footer>
+    </body>
+</html>

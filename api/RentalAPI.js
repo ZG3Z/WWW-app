@@ -1,4 +1,4 @@
-const RentalRepository = require('../repository/mysql2/RentalRepository');
+const RentalRepository = require('../repository/sequelize/RentalRepository');
 
 exports.getRentals = (req, res, next) => {
     RentalRepository.getRentals()

@@ -1,4 +1,4 @@
-const ClientRepository = require('../repository/mysql2/ClientRepository');
+const ClientRepository = require('../repository/sequelize/ClientRepository');
 
 exports.getClients = (req, res, next) => {
     ClientRepository.getClients()

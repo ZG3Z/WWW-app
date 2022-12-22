@@ -1,13 +1,13 @@
 function validateForm(){
-    const personDataSelect = document.getElementById('personData');
-    const bikeDataSelect = document.getElementById('bikeData');
-    const dateFromInput = document.getElementById('dateFrom');
-    const dateToInput = document.getElementById('dateTo');
+    const personDataSelect = document.getElementById('Client_ID_client');
+    const bikeDataSelect = document.getElementById('Bike_ID_bike');
+    const dateFromInput = document.getElementById('Date_from');
+    const dateToInput = document.getElementById('Date_to');
 
-    const errorPersonData = document.getElementById('errorPersonData');
-    const errorBikeData = document.getElementById('errorBikeData');
-    const errorDateFrom = document.getElementById('errorDateFrom');
-    const errorDateTo = document.getElementById('errorDateTo');
+    const errorPersonData = document.getElementById('errorClient_ID_client');
+    const errorBikeData = document.getElementById('errorBike_ID_bike');
+    const errorDateFrom = document.getElementById('errorDate_from');
+    const errorDateTo = document.getElementById('errorDate_to');
     const errorsSummary = document.getElementById('errorsSummary');
 
     resetErrors([personDataSelect, bikeDataSelect, dateFromInput, dateToInput], [errorPersonData, errorBikeData, errorDateFrom, errorDateTo], errorsSummary);

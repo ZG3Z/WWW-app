@@ -1,4 +1,4 @@
-const BikeRepository = require('../repository/mysql2/BikeRepository');
+const BikeRepository = require('../repository/sequelize/BikeRepository');
 
 exports.getBikes = (req, res, next) => {
     BikeRepository.getBikes()

@@ -1,11 +1,11 @@
 function validateForm(){
-    const firstNameInput = document.getElementById('firstName');
-    const lastNameInput = document.getElementById('lastName');
-    const telephoneInput = document.getElementById('telephone');
-    const emailInput = document.getElementById('email');
+    const firstNameInput = document.getElementById('Name');
+    const lastNameInput = document.getElementById('Surname');
+    const telephoneInput = document.getElementById('Telephone');
+    const emailInput = document.getElementById('Email');
 
-    const errorFirstName = document.getElementById('errorFirstName');
-    const errorLastName = document.getElementById('errorLastName');
+    const errorFirstName = document.getElementById('errorName');
+    const errorLastName = document.getElementById('errorSurname');
     const errorTelephone = document.getElementById('errorTelephone');
     const errorEmail = document.getElementById('errorEmail');
     const errorsSummary = document.getElementById('errorsSummary');

@@ -1,35 +1,115 @@
 <%- include('../../fragments/header.ejs')%>
-
-    <main>
-        <h2>Nowe wypożyczenie</h2>
-        <form class="form" novalidate onsubmit="return validateForm();">
-            <label for="personData">Imię i nazwisko: <span class="symbol-required">*</span></label>
-            <select name="personData" id="personData">
-                <option value="">--Wybierz osobę wypożyczającą--</option>
-                <option value="1">Jan Kowalski</option>
-                <option value="2">Anna Nowak</option>
+    
+   <main>
+        <script type="application/javascript" src="/js/validationCommon.js"></script>
+        <script type="application/javascript" src="/js/validationRentalForm.js"></script>
+        <h2><%= pageTitle%></h2>
+        
+        <form class="form" method="post" action="<%=formAction%>" novalidate> <!-- onsubmit="return validateFormRent();"  -->
+            <input type="hidden" name="ID_rental" value="<%= rental.ID_rental %>">
+            <label for="Client_ID_client">Imię i nazwisko: <span class="symbol-required">*</span></label>
+            <select id="Client_ID_client" name="Client_ID_client"  required class="<%= validationErrors.find(e=>e.path.includes('Client_ID_client')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled' : ''%> >
+                <% if (formMode !='edit' ){ %>
+                    <option value="" selected="selected">--Wybierz osobę wypożyczającą--</option>
+                <% } %>
+                <% for (let i=0; i<allClients.length; i++) {let client=allClients[i]; %>
+                    <option value="<%= client.ID_client %>" label="<%= client.Name + ' ' + client.Surname %>"
+                        <%=(rental.ID_rental && client.ID_client.toString()==rental.Client.ID_client.toString()) ? 'selected' : ''%>>
+                    </option>
+                <% } %>
             </select>
-            <span id="errorPersonData" class="errors-text"></span>
-            <label for="bikeData">Model i marka: <span class="symbol-required">*</span></label>
-            <select name="bikeData" id="bikeData">
-                <option value="">--Wybierz wypożyczony rower--</option>
-                <option value="1">Specialized Rockhopper</option>
-                <option value="2">Unibike Indiana</option>
-                <option value="3">Cube SL Road</option>
+            <span id="errorClient_ID_client" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('Client_ID_client'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('Client_ID_client')).message %>
+                <% } %>
+            </span>
+            <label for="Bike_ID_bike">Model i marka: <span class="symbol-required">*</span></label>
+            <select id="Bike_ID_bike" name="Bike_ID_bike" required class="<%=validationErrors.find(e=>e.path.includes('Bike_ID_bike')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled': '' %> >
+                <% if (formMode !='edit' ){ %>
+                    <option value="" selected="selected">--Wybierz wypożyczony rower--</option>
+                <% } %>
+                <%for (let i=0; i<allBikes.length; i++) {let bike=allBikes[i]; %>
+                    <option value="<%= bike.ID_bike %>" label="<%=bike.Brand + ' ' + bike.Model%>"
+                        <%=(rental.ID_rental && bike.ID_bike.toString()==rental.Bike.ID_bike.toString()) ? 'selected' : '' %>></option>
+                <% } %>
             </select>
-            <span id="errorBikeData" class="errors-text"></span>
-            <label for="dateFrom">Data od: <span class="symbol-required">*</span></label>
-            <input type="date" name="dateFrom" id="dateFrom" required>
-            <span id="errorDateFrom" class="errors-text"></span>
-            <label for="dateTo">Data do: <span class="symbol-required">*</span></label>
-            <input type="date" name="dateTo" id="dateTo" required>
-            <span id="errorDateTo" class="errors-text"></span>
+            <span id="errorBike_ID_bike" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('Bike_ID_bike'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('Bike_ID_bike')).message %>
+                <% } %>
+            </span>
+            <label for="Date_from">Data od: <span class="symbol-required">*</span></label>
+            <input type="date" name="Date_from" id="Date_from" value="<%= (formMode=='createNew') ? '': rental.Date_from.toISOString().split('T')[0] %>" class="<%= validationErrors.find(e=>e.path.includes('Date_from')) ? 'error-input' : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+                <span id="errorDate_from" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('Date_from'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('Date_from')).message %>
+                <% } %>
+            </span>
+            <label for="Date_to">Data do: <span class="symbol-required">*</span></label>
+            <input type="date" name="Date_to" id="Date_to" value="<%= (formMode=='createNew') ? '': rental.Date_to.toISOString().split('T')[0] %>" class="<%= validationErrors.find(e=>e.path.includes('Date_to')) ? 'error-input' : '' %>"
+                <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
+            <span id="errorDate_to" class="errors-text">
+                <% if (validationErrors.find(e=> e.path.includes('Date_to'))) { %>
+                    <%= validationErrors.find(e=> e.path.includes('Date_to')).message %>
+                <% } %>
+            </span>
+                
+            
+            <% if (formMode == 'showDetails') { %>
+                <div>
+                    <a class="list-actions-button-edit" href="/rentals/edit/<%=rental.ID_rental%>">Edytuj</a>
+                </div>
+            <% } %>
             <div class="form-buttons">
                 <p id="errorsSummary" class="errors-text"></p>
-                <input type="submit" value="Dodaj" class="form-button-submit">
-                <a href="list.html" class="form-button-cancel">Anuluj</a>
-             </div>
+                <% if (formMode != 'showDetails') { %>
+                    <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                    <a class="form-button-cancel" href="/rentals">Anuluj</a>
+                <% } else { %>
+                    <a class="form-button-cancel" href="/rentals">Powrót</a>
+                <% } %>
+            </div>
         </form>
+        <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+            <h3>Szczegóły klienta</h3>
+            <div>
+                <table class="table-list">
+                    <thead>
+                        <tr>
+                            <th>Imię i nazwisko</th>
+                            <th>Telefon</th>
+                            <th>E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td><a href="/clients/details/<%= rental.Client.ID_client %>"><%= rental.Client.Name + ' ' + rental.Client.Surname %></a></td>
+                                <td><%= rental.Client.Telephone %></td>
+                                <td><%= rental.Client.Email %></td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3>Szczegóły roweru</h3>
+            <div>
+                <table class="table-list">
+                    <thead>
+                        <tr>
+                            <th>Marka i model</th>
+                            <th>Kolor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td><a href="/bikes/details/<%= rental.Bike.ID_bike %>"><%= rental.Bike.Brand + ' ' + rental.Bike.Model %></a></td>
+                                <td><%= rental.Bike.Colour %></td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        <% } %>
     </main>
+
     
 <%- include('../../fragments/footer.ejs')%>
