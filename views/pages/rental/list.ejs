@@ -14,7 +14,7 @@
             </thead>
             <% for (let rental of rentals) { %>    
                 <tr>
-                    <td><%=rental.Client.Name%> <%=rental.Client.Surname%></td>
+                    <td><%=rental.Customer.Name%> <%=rental.Customer.Surname%></td>
                     <td><%=rental.Bike.Brand%> <%=rental.Bike.Model%></td>
                     <td><%= rental.Date_from.toISOString().split('T')[0] %></td>
                     <td><%= rental.Date_to.toISOString().split('T')[0] %></td>

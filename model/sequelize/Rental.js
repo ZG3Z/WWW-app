@@ -8,7 +8,7 @@ const Rental = sequelize.define('Rental', {
         allowNull: false,
         primaryKey: true,
     },
-    Client_ID_client: {
+    Customer_ID_customer: {
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: {

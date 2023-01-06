@@ -1,5 +1,5 @@
 const RentalRepository = require('../repository/sequelize/RentalRepository');
-const ClientRepository = require('../repository/sequelize/ClientRepository');
+const CustomerRepository = require('../repository/sequelize/CustomerRepository');
 const BikeRepository = require('../repository/sequelize/BikeRepository');
 
 exports.showRentalList = (req, res, next) => {
@@ -13,18 +13,18 @@ exports.showRentalList = (req, res, next) => {
 }
 
 exports.showAddRentalForm = (req, res, next) => {
-    let allClients, allBikes;
+    let allCustomers, allBikes;
 
-    ClientRepository.getClients()
-        .then( clients => {
-            allClients = clients;
+    CustomerRepository.getCustomers()
+        .then( customers => {
+            allCustomers = customers;
             return BikeRepository.getBikes();
         })
         .then(bikes => {
             allBikes = bikes;
             res.render('pages/rental/form', {
                 rental: {},
-                allClients: allClients,
+                allCustomers: allCustomers,
                 allBikes: allBikes,
                 formMode: 'createNew',
                 pageTitle: 'Nowe wypożyczenie',
@@ -38,11 +38,11 @@ exports.showAddRentalForm = (req, res, next) => {
 
 exports.showEditRentalForm = (req, res, next) => {
     const rentalId = req.params.rentalId;
-    let allClients, allBikes;
+    let allCustomers, allBikes;
 
-    ClientRepository.getClients()
-        .then( clients => {
-            allClients = clients;
+    CustomerRepository.getCustomers()
+        .then( customers => {
+            allCustomers = customers;
             return BikeRepository.getBikes();
         })
         .then(bikes => {
@@ -52,7 +52,7 @@ exports.showEditRentalForm = (req, res, next) => {
         .then(rental => {
             res.render('pages/rental/form', {
                 rental: rental,
-                allClients: allClients,
+                allCustomers: allCustomers,
                 allBikes: allBikes,
                 formMode: 'edit',
                 pageTitle: 'Edycja wypożyczenia',
@@ -66,11 +66,11 @@ exports.showEditRentalForm = (req, res, next) => {
 
 exports.showRentalDetails = (req, res, next) => {
     const rentalId = req.params.rentalId;
-    let allClients, allBikes;
+    let allCustomers, allBikes;
 
-    ClientRepository.getClients()
-        .then( clients => {
-            allClients = clients;
+    CustomerRepository.getCustomers()
+        .then( customers => {
+            allCustomers = customers;
             return BikeRepository.getBikes();
         })
         .then(bikes => {
@@ -80,7 +80,7 @@ exports.showRentalDetails = (req, res, next) => {
         .then(rental => {
             res.render('pages/rental/form', {
                 rental: rental,
-                allClients: allClients,
+                allCustomers: allCustomers,
                 allBikes: allBikes,
                 formMode: 'showDetails',
                 pageTitle: 'Szczegóły wypożyczenia',
@@ -99,16 +99,16 @@ exports.addRental = (req, res, next) => {
             res.redirect('/rentals');
         })
         .catch(err => {
-            ClientRepository.getClients()
-            .then( clients => {
-                allClients = clients;
+            CustomerRepository.getCustomers()
+            .then( customers => {
+                allCustomers = customers;
                 return BikeRepository.getBikes();
             })
             .then(bikes => {
                 allBikes = bikes;
                 res.render('pages/rental/form', {
                     rental: {},
-                    allClients: allClients,
+                    allCustomers: allCustomers,
                     allBikes: allBikes,
                     formMode: 'createNew',
                     pageTitle: 'Nowe wypożyczenie',
@@ -130,9 +130,9 @@ exports.updateRental = (req, res, next) => {
             res.redirect('/rentals');
         })
         .catch(err => {
-            ClientRepository.getClients()
-                .then( clients => {
-                    allClients = clients;
+            CustomerRepository.getCustomers()
+                .then( customers => {
+                    allCustomers = customers;
                     return BikeRepository.getBikes();
                 })
                 .then(bikes => {
@@ -142,7 +142,7 @@ exports.updateRental = (req, res, next) => {
                 .then(rental => {
                     res.render('pages/rental/form', {
                         rental: rental,
-                        allClients: allClients,
+                        allCustomers: allCustomers,
                         allBikes: allBikes,
                         formMode: 'edit',
                         pageTitle: 'Edycja wypożyczenia',

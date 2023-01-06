@@ -1,14 +1,14 @@
 const Sequelize = require('sequelize');
 
 const Bike = require("../../model/sequelize/Bike");
-const Client = require("../../model/sequelize/Client");
+const Customer = require("../../model/sequelize/Customer");
 const Rental = require("../../model/sequelize/Rental");
 
 exports.getRentals = () => {
     return Rental.findAll({include: [
         {
-            model: Client,
-            as: 'Client'
+            model: Customer,
+            as: 'Customer'
         },
         {
             model: Bike,
@@ -20,8 +20,8 @@ exports.getRentals = () => {
 exports.getRentalById = (rentalId) => {
     return Rental.findByPk(rentalId, {include: [
         {
-            model: Client,
-            as: 'Client'
+            model: Customer,
+            as: 'Customer'
         },
         {
             model: Bike,
@@ -32,7 +32,7 @@ exports.getRentalById = (rentalId) => {
 
 exports.createRental = (data) => {
     return Rental.create({
-        Client_ID_client: data.Client_ID_client,
+        Customer_ID_customer: data.Customer_ID_customer,
         Bike_ID_bike: data.Bike_ID_bike,
         Date_from: data.Date_from,
         Date_to: data.Date_to

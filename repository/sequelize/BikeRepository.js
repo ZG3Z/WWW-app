@@ -1,5 +1,5 @@
 const Bike = require("../../model/sequelize/Bike");
-const Client = require("../../model/sequelize/Client");
+const Customer = require("../../model/sequelize/Customer");
 const Rental = require("../../model/sequelize/Rental");
 
 exports.getBikes = () => {
@@ -13,8 +13,8 @@ exports.getBikeById = (bikeId) => {
                 model: Rental,
                 as: 'Rentals',
                 include: [{
-                    model: Client,
-                    as: 'Client'
+                    model: Customer,
+                    as: 'Customer'
                 }]
             }]
     });

@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../../config/sequelize/sequelize');
 
-const Client = sequelize.define('Client', {
-    ID_client: {
+const Customer = sequelize.define('Customer', {
+    ID_customer: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
@@ -50,16 +50,7 @@ const Client = sequelize.define('Client', {
     Email: {
         type: Sequelize.STRING,
         allowNull: true,
-        validate: {
-            len: {
-                args: [5,60],
-                msg: "Pole powinno zawierać od 5 do 60 znaków"
-            },
-            isEmail: {
-                msg: "Pole powinno zawirać prawidłowy adres email"
-            }
-        }
     }
 });
 
-module.exports = Client;
+module.exports = Customer;

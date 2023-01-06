@@ -59,7 +59,7 @@
                 <tbody>
                     <% for (let rental of bike.Rentals) { %>
                         <tr>
-                            <td><a href="/clients/details/<%= rental.Client.ID_client %>"><%= rental.Client.Name + ' ' + rental.Client.Surname %></a></td>
+                            <td><a href="/customers/details/<%= rental.Customer.ID_customer %>"><%= rental.Customer.Name + ' ' + rental.Customer.Surname %></a></td>
                             <td><%= rental.Date_from.toISOString().split('T')[0] %></td>
                             <td><%= rental.Date_to.toISOString().split('T')[0] %></td>
                         </tr>

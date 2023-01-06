@@ -6,11 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 
-var clientRouter = require('./routes/clientRoute');
+var customerRouter = require('./routes/customerRoute');
 var bikeRouter = require('./routes/bikeRoute');
 var rentalRouter = require('./routes/rentalRoute');
 
-var clientApiController = require('./routes/api/ClientApiRoute');
+var customerApiController = require('./routes/api/CustomerApiRoute');
 var bikeApiController = require('./routes/api/BikeApiRoute');
 var rentalApiController = require('./routes/api/RentalApiRoute');
 
@@ -33,11 +33,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/clients', clientRouter);
+app.use('/customers', customerRouter);
 app.use('/bikes', bikeRouter);
 app.use('/rentals', rentalRouter);
 
-app.use('/api/clients', clientApiController);
+app.use('/api/customers', customerApiController);
 app.use('/api/bikes', bikeApiController);
 app.use('/api/rentals', rentalApiController);
 

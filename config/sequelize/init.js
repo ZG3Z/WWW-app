@@ -1,38 +1,38 @@
 const sequelize = require('./sequelize');
 
-const Client = require('../../model/sequelize/Client');
+const Customer = require('../../model/sequelize/Customer');
 const Bike = require('../../model/sequelize/Bike');
 const Rental = require('../../model/sequelize/Rental');
 
 module.exports = () => {
-    Client.hasMany(Rental, {as: 'Rentals', foreignKey: {name: 'Client_ID_client', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
-    Rental.belongsTo(Client, {as: 'Client', foreignKey: {name: 'Client_ID_client', allowNull: false}});
+    Customer.hasMany(Rental, {as: 'Rentals', foreignKey: {name: 'Customer_ID_customer', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
+    Rental.belongsTo(Customer, {as: 'Customer', foreignKey: {name: 'Customer_ID_customer', allowNull: false}});
     Bike.hasMany(Rental, {as: 'Rentals', foreignKey: {name: 'Bike_ID_bike', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
     Rental.belongsTo(Bike, {as: 'Bike', foreignKey: {name: 'Bike_ID_bike', allowNull: false}});
 
-    let allClients, allBikes;
+    let allCustomers, allBikes;
 
     return sequelize
         .sync({force: true})
         .then( () => {
-            return Client.findAll();
+            return Customer.findAll();
         })
-        .then (clients => {
-            if(!clients || clients.length == 0){
-                return Client.bulkCreate([
+        .then (customers => {
+            if(!customers || customers.length == 0){
+                return Customer.bulkCreate([
                     {Name: 'Jan', Surname: 'Kowalski', Telephone: '123456789', Email: 'jan.kowalski@bike.com'},
                     {Name: 'Anna', Surname: 'Nowak', Telephone: '987654321', Email: 'anna.nowak@bike.com'},
                     {Name: 'Adam', Surname: 'Kowalczyk', Telephone: '888888888', Email: 'adam.kowalczyk@bike.com'}
                 ])
                 .then( () => {
-                    return Client.findAll();
+                    return Customer.findAll();
                 });
             } else {
-                return clients;
+                return customers;
             }
         })
-        .then( clients => {
-            allClients = clients;
+        .then( customers => {
+            allCustomers = customers;
             return Bike.findAll();
         })
         .then( bikes => {
@@ -56,12 +56,12 @@ module.exports = () => {
         .then( rentals => {
             if(!rentals || rentals.length == 0){
                 return Rental.bulkCreate([
-                    {Client_ID_client: allClients[0].ID_client, Bike_ID_bike: allBikes[0].ID_bike, Date_from: '2022-03-04', Date_to: '2022-03-06'},
-                    {Client_ID_client: allClients[1].ID_client, Bike_ID_bike: allBikes[0].ID_bike, Date_from: '2022-04-20', Date_to: '2022-05-12'},
-                    {Client_ID_client: allClients[0].ID_client, Bike_ID_bike: allBikes[1].ID_bike, Date_from: '2022-05-10', Date_to: '2022-06-04'},
-                    {Client_ID_client: allClients[2].ID_client, Bike_ID_bike: allBikes[2].ID_bike, Date_from: '2022-07-24', Date_to: '2022-08-14'},
-                    {Client_ID_client: allClients[0].ID_client, Bike_ID_bike: allBikes[2].ID_bike, Date_from: '2022-09-10', Date_to: '2022-09-24'},
-                    {Client_ID_client: allClients[1].ID_client, Bike_ID_bike: allBikes[0].ID_bike, Date_from: '2022-09-18', Date_to: '2022-07-20'}
+                    {Customer_ID_customer: allCustomers[0].ID_customer, Bike_ID_bike: allBikes[0].ID_bike, Date_from: '2022-03-04', Date_to: '2022-03-06'},
+                    {Customer_ID_customer: allCustomers[1].ID_customer, Bike_ID_bike: allBikes[0].ID_bike, Date_from: '2022-04-20', Date_to: '2022-05-12'},
+                    {Customer_ID_customer: allCustomers[0].ID_customer, Bike_ID_bike: allBikes[1].ID_bike, Date_from: '2022-05-10', Date_to: '2022-06-04'},
+                    {Customer_ID_customer: allCustomers[2].ID_customer, Bike_ID_bike: allBikes[2].ID_bike, Date_from: '2022-07-24', Date_to: '2022-08-14'},
+                    {Customer_ID_customer: allCustomers[0].ID_customer, Bike_ID_bike: allBikes[2].ID_bike, Date_from: '2022-09-10', Date_to: '2022-09-24'},
+                    {Customer_ID_customer: allCustomers[1].ID_customer, Bike_ID_bike: allBikes[0].ID_bike, Date_from: '2022-09-18', Date_to: '2022-07-20'}
                 ]);
             } else {
                 return rentals;

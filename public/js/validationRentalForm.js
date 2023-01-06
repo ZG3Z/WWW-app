@@ -1,10 +1,10 @@
 function validateForm(){
-    const personDataSelect = document.getElementById('Client_ID_client');
+    const personDataSelect = document.getElementById('Customer_ID_customer');
     const bikeDataSelect = document.getElementById('Bike_ID_bike');
     const dateFromInput = document.getElementById('Date_from');
     const dateToInput = document.getElementById('Date_to');
 
-    const errorPersonData = document.getElementById('errorClient_ID_client');
+    const errorPersonData = document.getElementById('errorCustomer_ID_customer');
     const errorBikeData = document.getElementById('errorBike_ID_bike');
     const errorDateFrom = document.getElementById('errorDate_from');
     const errorDateTo = document.getElementById('errorDate_to');

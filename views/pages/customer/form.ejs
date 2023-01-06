@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="/" class="<%- navLocation == "mainNav" ? 'active' : ''%>">Strona główna</a></li>
-                <li><a href="/clients" class="<%- navLocation == "clientNav" ? 'active' : ''%>">Klienci</a></li>
+                <li><a href="/customers" class="<%- navLocation == "customerNav" ? 'active' : ''%>">Klienci</a></li>
                 <li><a href="/bikes" class="<%- navLocation == "bikeNav" ? 'active' : ''%>">Rowery</a></li>
                 <li><a href="/rentals" class="<%- navLocation == "rentalNav" ? 'active' : ''%>">Wypożyczenia</a></li>
             </ul>
@@ -23,12 +23,12 @@
 
         <main>
             <script type="application/javascript" src="/js/validationCommon.js"></script>
-            <script type="application/javascript" src="/js/validationClientForm.js"></script>
+            <script type="application/javascript" src="/js/validationCustomerForm.js"></script>
             <h2><%= pageTitle%></h2>
             <form class="form" method="post" action="<%=formAction%>" novalidate><!--onsubmit="return validateForm();" -->
-                <input type="hidden" name="ID_client" value="<%= client.ID_client %>">
+                <input type="hidden" name="ID_customer" value="<%= customer.ID_customer %>">
                 <label for="Name">Imię: <span class="symbol-required">*</span></label>
-                <input type="text" name="Name" id="Name" placeholder="2-30 znaków" value="<%= client.Name %>"
+                <input type="text" name="Name" id="Name" placeholder="2-30 znaków" value="<%= customer.Name %>"
                     <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
                 <span id="errorName" class="errors-text">
                     <% if (validationErrors.find(e=> e.path.includes('Name'))) { %>
@@ -36,7 +36,7 @@
                     <% } %>
                 </span>
                 <label for="Surname">Nazwisko: <span class="symbol-required">*</span></label>
-                <input type="text" name="Surname" id="Surname" placeholder="2-30 znaków" value="<%= client.Surname %>" 
+                <input type="text" name="Surname" id="Surname" placeholder="2-30 znaków" value="<%= customer.Surname %>" 
                     <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
                 <span id="errorSurname" class="errors-text">
                     <% if (validationErrors.find(e=> e.path.includes('Surname'))) { %>
@@ -44,7 +44,7 @@
                     <% } %>
                 </span>
                 <label for="Telephone">Telefon: <span class="symbol-required">*</span></label>
-                <input type="text" name="Telephone" id="Telephone" placeholder="+48 XXX XXX XXX" value="<%= client.Telephone %>"
+                <input type="text" name="Telephone" id="Telephone" placeholder="+48 XXX XXX XXX" value="<%= customer.Telephone %>"
                     <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
                 <span id="errorTelephone" class="errors-text">
                     <% if (validationErrors.find(e=> e.path.includes('Telephone'))) { %>
@@ -52,7 +52,7 @@
                     <% } %>
                 </span>
                 <label for="Email">E-mail: <span class="symbol-required">*</span></label>
-                <input type="text" name="Email" id="Email" placeholder="np. nazwa@domena.pl" value="<%= client.Email%>"
+                <input type="text" name="Email" id="Email" placeholder="np. nazwa@domena.pl" value="<%= customer.Email%>"
                     <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
                 <span id="errorEmail" class="errors-text">
                     <% if (validationErrors.find(e=> e.path.includes('Email'))) { %>
@@ -63,16 +63,16 @@
 
                 <% if (formMode == 'showDetails') { %>
                     <div>
-                        <a class="list-actions-button-edit" href="/clients/edit/<%=client.ID_client%>">Edytuj</a>
+                        <a class="list-actions-button-edit" href="/customers/edit/<%=customer.ID_customer%>">Edytuj</a>
                     </div>
                 <% } %>
                 <div class="form-buttons">
                     <p id="errorsSummary" class="errors-text"></p>
                     <% if (formMode != 'showDetails') { %>
                         <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-                        <a class="form-button-cancel" href="/clients">Anuluj</a>
+                        <a class="form-button-cancel" href="/customers">Anuluj</a>
                     <% } else { %>
-                        <a class="form-button-cancel" href="/clients">Powrót</a>
+                        <a class="form-button-cancel" href="/customers">Powrót</a>
                     <% } %>
                 </div>
             </form>
@@ -87,7 +87,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for (let rental of client.Rentals) { %>
+                        <% for (let rental of customer.Rentals) { %>
                             <tr>
                                 <td><a href="/bikes/details/<%= rental.Bike.ID_bike %>"><%= rental.Bike.Brand + ' ' + rental.Bike.Model %></a></td>
                                 <td><%= rental.Date_from.toISOString().split('T')[0] %></td>
