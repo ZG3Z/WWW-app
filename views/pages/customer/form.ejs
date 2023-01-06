@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rbike - rental bike</title>
-
-        <link rel="stylesheet" href="/css/style.css">
-    </head>
-    <body>
-        <header>
-            <h1>RBike</h1>
-            <img src="/img/logo.png" alt="RBike Logo">
-        </header>
-        <nav>
-            <ul>
-                <li><a href="/" class="<%- navLocation == "mainNav" ? 'active' : ''%>">Strona główna</a></li>
-                <li><a href="/customers" class="<%- navLocation == "customerNav" ? 'active' : ''%>">Klienci</a></li>
-                <li><a href="/bikes" class="<%- navLocation == "bikeNav" ? 'active' : ''%>">Rowery</a></li>
-                <li><a href="/rentals" class="<%- navLocation == "rentalNav" ? 'active' : ''%>">Wypożyczenia</a></li>
-            </ul>
-        </nav>
-
+<%- include('../../fragments/header.ejs')%>
         <main>
             <script type="application/javascript" src="/js/validationCommon.js"></script>
             <script type="application/javascript" src="/js/validationCustomerForm.js"></script>
@@ -99,8 +77,4 @@
             <% } %>
         </main>
 
-        <footer>
-            Zuzanna Gez - s23570
-        </footer>
-    </body>
-</html>
+<%- include('../../fragments/footer.ejs')%>
