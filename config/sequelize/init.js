@@ -4,6 +4,9 @@ const Customer = require('../../model/sequelize/Customer');
 const Bike = require('../../model/sequelize/Bike');
 const Rental = require('../../model/sequelize/Rental');
 
+const authUtil = require('../../util/authUtils');
+const passHash = authUtil.hashPassword('12345');
+
 module.exports = () => {
     Customer.hasMany(Rental, {as: 'Rentals', foreignKey: {name: 'Customer_ID_customer', allowNull: false}, constraints: true, onDelete: 'CASCADE'});
     Rental.belongsTo(Customer, {as: 'Customer', foreignKey: {name: 'Customer_ID_customer', allowNull: false}});
@@ -20,9 +23,9 @@ module.exports = () => {
         .then (customers => {
             if(!customers || customers.length == 0){
                 return Customer.bulkCreate([
-                    {Name: 'Jan', Surname: 'Kowalski', Telephone: '123456789', Email: 'jan.kowalski@bike.com'},
-                    {Name: 'Anna', Surname: 'Nowak', Telephone: '987654321', Email: 'anna.nowak@bike.com'},
-                    {Name: 'Adam', Surname: 'Kowalczyk', Telephone: '888888888', Email: 'adam.kowalczyk@bike.com'}
+                    {Name: 'Jan', Surname: 'Kowalski', Telephone: '123456789', Email: 'jan.kowalski@rbike.com', Password: passHash},
+                    {Name: 'Anna', Surname: 'Nowak', Telephone: '987654321', Email: 'anna.nowak@rbike.com', Password: passHash},
+                    {Name: 'Adam', Surname: 'Kowalczyk', Telephone: '888888888', Email: 'adam.kowalczyk@rbike.com', Password: passHash}
                 ])
                 .then( () => {
                     return Customer.findAll();

@@ -8,10 +8,27 @@
         <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
+        <% if(!loggedUser) { %>
+            <div id="'login">
+                <h3>Logowanie</h3>
+                <form class="form-buttons" method="post" action="/login" novalidate>
+                    <label for="LoginEmail">Email:</label>
+                    <input type="email" id="LoginEmail" name="LoginEmail">
+                    <label for="LoginPassword">Hasło:</label>
+                    <input type="password" id="LoginPassword" name="LoginPassword">
+                    <input type="submit" value="Zaloguj się">
+                    <span class="errors-text" id="loginErrors"><%= loginError ? loginError : ''%></span>
+                </form>
+            </div>
+        <% } else { %>
+            <span>Jesteś zalogowany jako: <%=loggedUser.Name + " " + loggedUser.Surname%></span>
+            <a href="/logout">Wyloguj się</a>
+        <% } %>        
         <header>
             <h1>RBike</h1>
             <img src="/img/logo.png" alt="RBike Logo">
         </header>
+        <% if(loggedUser) { %>
         <nav>
             <ul>
                 <li><a href="/" class="<%- navLocation == "mainNav" ? 'active' : ''%>">Strona główna</a></li>
@@ -20,3 +37,4 @@
                 <li><a href="/rentals" class="<%- navLocation == "rentalNav" ? 'active' : ''%>">Wypożyczenia</a></li>
             </ul>
         </nav>
+        <% } %>

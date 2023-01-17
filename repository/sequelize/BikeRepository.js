@@ -29,9 +29,6 @@ exports.createBike = (newBikeData) => {
 };
 
 exports.updateBike = (bikeId, bikeData) => {
-    const Brand = bikeData.Brand;
-    const Model = bikeData.Model;
-    const Colour = bikeData.Colour;
     return Bike.update(bikeData, {where: {ID_bike: bikeId}});
 };
 

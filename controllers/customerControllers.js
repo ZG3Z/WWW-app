@@ -45,7 +45,7 @@ exports.showCustomerDetails = (req, res, next) => {
             res.render('pages/customer/form', {
                 customer: customer,
                 formMode: 'showDetails',
-                pageTitle: 'Szczegóły klientaa',
+                pageTitle: 'Szczegóły klienta',
                 formAction: '',
                 navLocation: 'customerNav',
                 validationErrors: []

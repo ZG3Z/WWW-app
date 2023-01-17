@@ -21,7 +21,7 @@
                         <%= validationErrors.find(e=> e.path.includes('Surname')).message %>
                     <% } %>
                 </span>
-                <label for="Telephone">Telefon: <span class="symbol-required">*</span></label>
+                <label for="Telephone">Telefon:</label>
                 <input type="text" name="Telephone" id="Telephone" placeholder="+48 XXX XXX XXX" value="<%= customer.Telephone %>"
                     <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
                 <span id="errorTelephone" class="errors-text">
@@ -37,6 +37,17 @@
                         <%= validationErrors.find(e=> e.path.includes('Email')).message %>
                     <% } %>
                 </span>
+
+                <% if (formMode == 'createNew') { %>
+                    <label for="Password">Hasło: <span class="symbol-required">*</span></label>
+                    <input type="text" name="Password" id="Password" placeholder="2-120 znaków" 
+                        <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+                    <span id="errorPassword" class="errors-text">
+                        <% if (validationErrors.find(e=> e.path.includes('Password'))) { %>
+                            <%= validationErrors.find(e=> e.path.includes('Password')).message %>
+                        <% } %>
+                    </span>
+                <% } %>
 
 
                 <% if (formMode == 'showDetails') { %>
@@ -54,7 +65,7 @@
                     <% } %>
                 </div>
             </form>
-            <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+            <% if (formMode == 'showDetails') { %>
                 <h2>Szczegóły wypożyczeń</h2>
                 <table class="table-list">
                     <thead>

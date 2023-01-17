@@ -2,6 +2,8 @@ const Bike = require("../../model/sequelize/Bike");
 const Customer = require("../../model/sequelize/Customer");
 const Rental = require("../../model/sequelize/Rental");
 
+const authUtil = require('../../util/authUtils');
+
 exports.getCustomers = () => {
     return Customer.findAll();
 }
@@ -25,20 +27,23 @@ exports.createCustomer = (newCustomerData) => {
         Name: newCustomerData.Name,
         Surname: newCustomerData.Surname,
         Telephone: newCustomerData.Telephone,
-        Email: newCustomerData.Email
+        Email: newCustomerData.Email,
+        Password: authUtil.hashPassword(newCustomerData.Password)
     });
 };
 
 exports.updateCustomer = (customerId, customerData) => {
-    const Name = customerData.Name;
-    const Surname = customerData.Surname;
-    const Telephone = customerData.Telephone;
-    const Email = customerData.Email;
     return Customer.update(customerData, {where: {ID_customer: customerId}});
 };
 
 exports.deleteCustomer = (customerId) => {
     return Customer.destroy({
         where: {ID_customer: customerId}
+    });
+};
+
+exports.findByEmail = (email) => {
+    return Customer.findOne({
+        where: {Email: email}
     });
 };

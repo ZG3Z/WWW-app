@@ -14,6 +14,8 @@ var customerApiController = require('./routes/api/CustomerApiRoute');
 var bikeApiController = require('./routes/api/BikeApiRoute');
 var rentalApiController = require('./routes/api/RentalApiRoute');
 
+const authUtil = require('./util/authUtils');
+
 const sequelizeInit = require('./config/sequelize/init');
 sequelizeInit()
   .catch(err => {
@@ -32,10 +34,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const session = require('express-session');
+app.use(session({
+  secret: 'my_secret_password',
+  resave: false,
+  saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+  const loggedUser = req.session.loggedUser;
+  res.locals.loggedUser = loggedUser;
+  if(!res.locals.loginError) {
+    res.locals.loginError = undefined;
+  }
+  next();
+});
+
 app.use('/', indexRouter);
-app.use('/customers', customerRouter);
-app.use('/bikes', bikeRouter);
-app.use('/rentals', rentalRouter);
+app.use('/customers', authUtil.permitAuthenticatedUser, customerRouter);
+app.use('/bikes', authUtil.permitAuthenticatedUser, bikeRouter);
+app.use('/rentals', authUtil.permitAuthenticatedUser, rentalRouter);
 
 app.use('/api/customers', customerApiController);
 app.use('/api/bikes', bikeApiController);
