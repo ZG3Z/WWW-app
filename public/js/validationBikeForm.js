@@ -12,39 +12,49 @@ function validateForm(){
 
     let valid = true;
 
+    const reqMessageBrandRequired = document.getElementById('errorMessage-required-brand').innerText;
+    const reqMessageBrandSpecific = document.getElementById('errorMessage-specific-brand').innerText;
+
     if(!checkRequired(brandInput.value)) {
         valid = false;
         brandInput.classList.add("error-input");
-        errorBrand.innerText = "Pole jest wymagane";
-    } else if(!checkTextLengthRange(brandInput.value, 2, 30)) {
+        errorBrand.innerText = reqMessageBrandRequired;
+    } else if(!checkTextLengthRange(brandInput.value, 2, 60)) {
         valid = false;
         brandInput.classList.add("error-input");
-        errorBrand.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        errorBrand.innerText = reqMessageBrandSpecific;
     }
+
+    const reqMessageModelRequired = document.getElementById('errorMessage-required-model').innerText;
+    const reqMessageModelSpecific = document.getElementById('errorMessage-specific-model').innerText;
 
     if(!checkRequired(modelInput.value)) {
         valid = false;
         modelInput.classList.add("error-input");
-        errorModel.innerText = "Pole jest wymagane";
-    } else if(!checkTextLengthRange(modelInput.value, 2, 30)) {
+        errorModel.innerText = reqMessageModelRequired;
+    } else if(!checkTextLengthRange(modelInput.value, 2, 60)) {
         valid = false;
         modelInput.classList.add("error-input");
-        errorModel.innerText = "Pole powinno zawierać od 2 do 60 znaków";
+        errorModel.innerText = reqMessageModelSpecific;
     }
 
-    if(!checkRequired(colourInput.value)) {
-        valid = false;
-        colourInput.classList.add("error-input");
-        errorColour.innerText = "Pole jest wymagane";
-    } else if(!checkTextLengthRange(colourInput.value, 2, 30)) {
-        valid = false;
-        colourInput.classList.add("error-input");
-        errorColour.innerText = "Pole powinno zawierać od 2 do 30 znaków";
-    }
+    const reqMessageColourRequired = document.getElementById('errorMessage-required-colour').innerText;
+    const reqMessageColourSpecific = document.getElementById('errorMessage-specific-colour').innerText;
 
+    if (!checkRequired(colourInput.value)) {
+       valid = false;
+       colourInput.classList.add("error-input");
+       errorColour.innerText = reqMessageColourRequired;
+    }else if(!checkTextLengthRange(colourInput.value, 2, 60)) {
+        valid = false;
+        colourInput.classList.add("error-input");
+        errorColour.innerText = reqMessageColourSpecific;
+    }
     
+    const reqMessageSummary = document.getElementById('errorMessage-summary').innerText;
+
     if(!valid) {
-        errorsSummary.innerText = "Formularz zawiera błędy";
+        errorsSummary.innerText = reqMessageSummary;
     }
 
     return valid;

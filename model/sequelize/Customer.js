@@ -10,29 +10,11 @@ const Customer = sequelize.define('Customer', {
     },
     Name: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Pole jest wymagane"
-            },
-            len: {
-                args: [2,30],
-                msg: "Pole powinno zawierać od 2 do 30 znaków"
-            }
-        }
+        allowNull: false
     },
     Surname: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Pole jest wymagane"
-            },
-            len: {
-                args: [2,30],
-                msg: "Pole powinno zawierać od 2 do 30 znaków"
-            }
-        }
+        allowNull: false
     },
     Telephone: {
         type: Sequelize.STRING,
@@ -40,29 +22,11 @@ const Customer = sequelize.define('Customer', {
     },
     Email: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            len: {
-                args: [5,60],
-                msg: "Pole powinno zawierać od 5 do 60 znaków"
-            },
-            isEmail: {
-                msg: "Pole powinno zawirać prawidłowy adres email"
-            }
-        }
+        allowNull: false
     },
     Password: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Pole jest wymagane"
-            },
-            len: {
-                args: [2,120],
-                msg: "Pole powinno zawierać od 2 do 120 znaków"
-            }
-        }
+        allowNull: false
     }
 });
 

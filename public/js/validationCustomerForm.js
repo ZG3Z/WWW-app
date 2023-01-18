@@ -16,66 +16,67 @@ function validateForm(){
 
     let valid = true;
 
-    if(!checkRequired(firstNameInput.value)) {
-        valid = false;
-        firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole jest wymagane";
-    } else if(!checkTextLengthRange(firstNameInput.value, 2, 30)) {
-        valid = false;
-        firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole powinno zawierać od 2 do 30 znaków";
-    }
+    const reqMessageNameRequired = document.getElementById('errorMessage-required-name').innerText;
+    const reqMessageNameSpecific = document.getElementById('errorMessage-specific-name').innerText;
 
     if(!checkRequired(firstNameInput.value)) {
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole jest wymagane";
-    } else if(!checkTextLengthRange(firstNameInput.value, 2, 30)) {
+        errorFirstName.innerText = reqMessageNameRequired;
+    } else if(!checkTextLengthRange(firstNameInput.value, 2, 60)) {
         valid = false;
         firstNameInput.classList.add("error-input");
-        errorFirstName.innerText = "Pole powinno zawierać od 2 do 30 znaków";
+        errorFirstName.innerText = reqMessageNameSpecific;
     }
+
+    const reqMessageSurnameRequired = document.getElementById('errorMessage-required-surname').innerText;
+    const reqMessageSurnameSpecific = document.getElementById('errorMessage-specific-surname').innerText;
 
     if(!checkRequired(lastNameInput.value)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole jest wymagane";
-    } else if(!checkTextLengthRange(lastNameInput.value, 2, 30)) {
+        errorLastName.innerText = reqMessageSurnameRequired;
+    } else if(!checkTextLengthRange(lastNameInput.value, 2, 60)) {
         valid = false;
         lastNameInput.classList.add("error-input");
-        errorLastName.innerText = "Pole powinno zawierać od 2 do 30 znaków";
+        errorLastName.innerText = reqMessageSurnameSpecific;
     }
+
+    const reqMessageTelephoneSpecific = document.getElementById('errorMessage-specific-telephone').innerText;
 
     if(!(telephoneInput.value=="")) {
         if(!checkTelephone(telephoneInput.value)) {
             valid = false;
             telephoneInput.classList.add("error-input");
-        errorTelephone.innerText = "Pole powinno zawierać prawidłowy numer telefonu";
+            errorTelephone.innerText = reqMessageTelephoneSpecific;
         }
     }
+
+    const reqMessageEmailRequired = document.getElementById('errorMessage-required-email').innerText;
+    const reqMessageEmailSpecific = document.getElementById('errorMessage-specific-email').innerText;
 
     if(!checkRequired(emailInput.value)) {
         valid = false;
         emailInput.classList.add("error-input");
-        errorEmail.innerText = "Pole jest wymagane";
+        errorEmail.innerText = reqMessageEmailRequired;
     } else if(!checkEmail(emailInput.value)) {
         valid = false;
         emailInput.classList.add("error-input");
-        errorEmail.innerText = "Pole powinno zawierać prawidłowy adres e-mail";
+        errorEmail.innerText = reqMessageEmailSpecific;
     }
+
+    const reqMessagePasswordRequired = document.getElementById('errorMessage-required-password').innerText;
 
     if(!checkRequired(passwordInput.value)) {
         valid = false;
         passwordInput.classList.add("error-input");
-        errorPassword.innerText = "Pole jest wymagane";
-    } else if(!checkTextLengthRange(passwordInput.value, 2, 120)) {
-        valid = false;
-        passwordInput.classList.add("error-input");
-        errorPassword.innerText = "Pole powinno zawierać od 2 do 120 znaków";
-    }
+        errorPassword.innerText = reqMessagePasswordRequired;
+    } 
+
+    const reqMessageSummary = document.getElementById('errorMessage-summary').innerText;
 
     if(!valid) {
-        errorsSummary.innerText = "Formularz zawiera błędy";
+        errorsSummary.innerText = reqMessageSummary;
     }
 
     return valid;

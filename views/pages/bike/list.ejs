@@ -1,14 +1,14 @@
 <%- include('../../fragments/header.ejs')%>
 
 <main>
-   <h2>Lista rowerów</h2>
+   <h2><%= __('bike.list.pageTitle') %></h2>
    <table class="table-list">
         <thead>
             <tr>
-                <th>Marka</th>
-                <th>Model</th>
-                <th>Kolor</th>
-                <th>Akcje</th>
+                <th><%= __('bike.fields.Brand') %></th>
+                <th><%= __('bike.fields.Model') %></th>
+                <th><%= __('bike.fields.Colour') %></th>
+                <th><%= __('list.actions.title') %></th>
             </tr>
         </thead>
         <tbody>
@@ -19,15 +19,15 @@
                 <td><%=bike.Colour%></td>
                 <td>
                     <ul class="list-actions">
-                        <li><a href="/bikes/details/<%=bike.ID_bike%>" class="list-actions-button-details">Szczegóły</a></li>
-                        <li><a href="/bikes/edit/<%=bike.ID_bike%>" class="list-actions-button-edit">Edytuj</a></li>
-                        <li><a href="/bikes/delete/<%=bike.ID_bike%>" class="list-actions-button-delete">Usuń</a></li>
+                        <li><a href="/bikes/details/<%=bike.ID_bike%>" class="list-actions-button-details"><%= __('list.actions.details') %></a></li>
+                        <li><a href="/bikes/edit/<%=bike.ID_bike%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a></li>
+                        <li><a href="/bikes/delete/<%=bike.ID_bike%>" class="list-actions-button-delete"><%= __('list.actions.delete') %></a></li>
                     </ul>
                 </td>
             </tr>
         <% } %>    
         </tbody>
    </table>
-<p><a href="/bikes/add" class="button-add"> Dodaj nowy rower</a></p>
+<p><a href="/bikes/add" class="button-add"><%= __('bike.list.addNew') %></a></p>
 
 <%- include('../../fragments/footer.ejs')%>

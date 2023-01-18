@@ -10,42 +10,15 @@ const Bike = sequelize.define('Bike', {
     },
     Brand: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Pole jest wymagane"
-            },
-            len: {
-                args: [2,60],
-                msg: "Pole powinno zawierać od 2 do 60 znaków"
-            }
-        }
+        allowNull: false
     },
     Model: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Pole jest wymagane"
-            },
-            len: {
-                args: [2,60],
-                msg: "Pole powinno zawierać od 2 do 60 znaków"
-            }
-        }
+        allowNull: false
     },
     Colour: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "Pole jest wymagane"
-            },
-            len: {
-                args: [2,30],
-                msg: "Pole powinno zawierać od 2 do 30 znaków"
-            }
-        }
+        allowNull: false
     }
 });
 

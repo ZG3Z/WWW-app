@@ -1,15 +1,15 @@
 <%- include('../../fragments/header.ejs')%>
 
     <main>
-        <h2>Lista klientów</h2>
+        <h2><%= __('customer.list.pageTitle') %></h2>
        <table class="table-list">
             <thead>
                 <tr>
-                    <th>Imię</th>
-                    <th>Nazwisko</th>
-                    <th>Telefon</th>
-                    <th>E-mail</th>
-                    <th>Akcje</th>
+                    <th><%= __('customer.fields.Name') %></th>
+                    <th><%= __('customer.fields.Surname') %></th>
+                    <th><%= __('customer.fields.Telephone') %></th>
+                    <th><%= __('customer.fields.Email') %></th>
+                    <th><%= __('list.actions.title') %></th>
                 </tr>
             </thead>
             <tbody>
@@ -21,16 +21,16 @@
                     <td><%=customer.Email%></td>
                     <td>
                         <ul class="list-actions">
-                            <li><a href="/customers/details/<%=customer.ID_customer%>" class="list-actions-button-details">Szczegóły</a></li>
-                            <li><a href="/customers/edit/<%=customer.ID_customer%>" class="list-actions-button-edit">Edytuj</a></li>
-                            <li><a href="/customers/delete/<%=customer.ID_customer%>" class="list-actions-button-delete">Usuń</a></li>
+                            <li><a href="/customers/details/<%=customer.ID_customer%>" class="list-actions-button-details"><%= __('list.actions.details') %></a></li>
+                            <li><a href="/customers/edit/<%=customer.ID_customer%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a></li>
+                            <li><a href="/customers/delete/<%=customer.ID_customer%>" class="list-actions-button-delete"><%= __('list.actions.delete') %></a></li>
                         </ul>
                     </td>
                 </tr>
             <% } %>    
             </tbody>
        </table>
-    <p><a href="/customers/add" class="button-add"> Dodaj nowego klienta</a></p>
+    <p><a href="/customers/add" class="button-add"><%= __('customer.list.addNew') %></a></p>
     </main>
 
 <%- include('../../fragments/footer.ejs')%>

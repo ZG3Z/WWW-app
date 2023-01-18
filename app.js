@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const i18n = require('i18n');
 
 var indexRouter = require('./routes/index');
 
@@ -24,6 +25,14 @@ sequelizeInit()
 
 var app = express();
 
+i18n.configure({
+  locales: ['pl', 'en'],
+  directory: path.join(__dirname, 'locales'),
+  objectNotation: true,
+  defaultLocale: 'pl',
+  cookie: 'rbike-lang',
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,8 +40,9 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(i18n.init);
 
 const session = require('express-session');
 app.use(session({
@@ -46,6 +56,14 @@ app.use((req, res, next) => {
   res.locals.loggedUser = loggedUser;
   if(!res.locals.loginError) {
     res.locals.loginError = undefined;
+  }
+  next();
+});
+
+app.use((req, res, next) => {
+  if(!res.locals.lang) {
+      const currentLang = req.cookies['rbike-lang'];
+      res.locals.lang = currentLang;
   }
   next();
 });

@@ -13,9 +13,9 @@ exports.showCustomerList = (req, res, next) => {
 exports.showAddCustomerForm = (req, res, next) => {
     res.render('pages/customer/form', {
         customer: {},
-        pageTitle: 'Nowy klient',
+        pageTitle: req.__('customer.form.add.pageTitle'),
         formMode: 'createNew',
-        btnLabel: 'Dodaj klienta',
+        btnLabel: req.__('customer.form.add.btnLabel'),
         formAction: '/customers/add',
         navLocation: 'customerNav',
         validationErrors: []
@@ -29,8 +29,8 @@ exports.showEditCustomerForm = (req, res, next) => {
         res.render('pages/customer/form', {
             customer: customer,
             formMode: 'edit',
-            pageTitle: 'Edycja klient',
-            btnLabel: 'Edytuj klienta',
+            pageTitle: req.__('customer.form.edit.pageTitle'),
+            btnLabel: req.__('customer.form.edit.btnLabel'),
             formAction: '/customers/edit',
             navLocation: 'customerNav',
             validationErrors: []
@@ -45,7 +45,7 @@ exports.showCustomerDetails = (req, res, next) => {
             res.render('pages/customer/form', {
                 customer: customer,
                 formMode: 'showDetails',
-                pageTitle: 'Szczegóły klienta',
+                pageTitle: req.__('customer.form.details.pageTitle'),
                 formAction: '',
                 navLocation: 'customerNav',
                 validationErrors: []
@@ -62,9 +62,9 @@ exports.addCustomer = (req, res, next) => {
         .catch( err => {
             res.render('pages/customer/form', {
                 customer: customerData,
-                pageTitle: 'Nowy klient',
+                pageTitle: req.__('customer.form.add.pageTitle'),
                 formMode: 'createNew',
-                btnLabel: 'Dodaj klienta',
+                btnLabel: req.__('customer.form.add.btnLabel'),
                 formAction: '/customers/add',
                 navLocation: 'customerNav',
                 validationErrors: err.errors
@@ -83,8 +83,8 @@ exports.updateCustomer = (req, res, next) => {
             res.render('pages/customer/form', {
                 customer: customerData,
                 formMode: 'edit',
-                pageTitle: 'Edycja klienta',
-                btnLabel: 'Edytuj klienta',
+                pageTitle: req.__('customer.form.edit.pageTitle'),
+                btnLabel: req.__('customer.form.edit.btnLabel'),
                 formAction: '/customers/edit',
                 navLocation: 'customerNav',
                 validationErrors: err.errors
@@ -104,8 +104,8 @@ exports.deleteCustomer = (req, res, next) => {
             res.render('pages/customer/form', {
                 customer: customerData,
                 formMode: 'delete',
-                pageTitle: 'Usuwanie klientaa',
-                btnLabel: 'Usuń klienta',
+                pageTitle: req.__('customer.form.delete.pageTitle'),
+                btnLabel: req.__('customer.form.delete.btnLabel'),
                 formAction: '/customers/delete',
                 navLocation: 'customerNav',
                 validationErrors: []

@@ -14,41 +14,42 @@ function validateForm(){
 
     let valid = true;
 
+    const reqMessageCustomerRequired = document.getElementById('errorMessage-required-customer').innerText;
+
     if(!checkRequired(personDataSelect.value)) {
         valid = false;
         personDataSelect.classList.add("error-input");
-        errorPersonData.innerText = "Pole jest wymagane";
+        errorPersonData.innerText = reqMessageCustomerRequired;
     } 
+
+    const reqMessageBikeRequired = document.getElementById('errorMessage-required-bike').innerText;
 
     if(!checkRequired(bikeDataSelect.value)) {
         valid = false;
         bikeDataSelect.classList.add("error-input");
-        errorBikeData.innerText = "Pole jest wymagane";
+        errorBikeData.innerText = reqMessageBikeRequired;
     } 
+
+    const reqMessageDateFromRequired = document.getElementById('errorMessage-required-datefrom').innerText;
 
     if(!checkRequired(dateFromInput.value)) {
         valid = false;
         dateFromInput.classList.add("error-input");
-        errorDateFrom.innerText = "Pole jest wymagane";
-    } else if(checkDateIfAfter(new Date(dateFromInput.value), new Date())) {
-        valid = false;
-        dateFromInput.classList.add("error-input");
-        errorDateFrom.innerText = "Data nie może być z przeszłości";
+        errorDateFrom.innerText = reqMessageDateFromRequired;
     } 
     
+    const reqMessageDateToRequired = document.getElementById('errorMessage-required-dateto').innerText;
+
     if(!checkRequired(dateToInput.value)) {
         valid = false;
         dateToInput.classList.add("error-input");
-        errorDateTo.innerText = "Pole jest wymagane";
-    } else if(!checkDateIfAfter(new Date(dateFromInput.value), new Date(dateToInput.value))) {
-        valid = false;
-        dateToInput.classList.add("error-input");
-        errorDateTo.innerText = "Data do powinna być późniejsza niż data od";
+        errorDateTo.innerText = reqMessageDateToRequired;
     } 
 
+    const reqMessageSummary = document.getElementById('errorMessage-summary').innerText;
 
     if(!valid) {
-        errorsSummary.innerText = "Formularz zawiera błędy";
+        errorsSummary.innerText = reqMessageSummary;
     }
 
     return valid;

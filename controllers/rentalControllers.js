@@ -27,8 +27,8 @@ exports.showAddRentalForm = (req, res, next) => {
                 allCustomers: allCustomers,
                 allBikes: allBikes,
                 formMode: 'createNew',
-                pageTitle: 'Nowe wypożyczenie',
-                btnLabel: 'Dodaj wypożyczenie',
+                pageTitle: req.__('rental.form.add.pageTitle'),
+                btnLabel: req.__('rental.form.add.btnLabel'),
                 formAction: '/rentals/add',
                 navLocation: 'rentalNav',
                 validationErrors: []
@@ -55,8 +55,8 @@ exports.showEditRentalForm = (req, res, next) => {
                 allCustomers: allCustomers,
                 allBikes: allBikes,
                 formMode: 'edit',
-                pageTitle: 'Edycja wypożyczenia',
-                btnLabel: 'Edytuj wypożyczenie',
+                pageTitle: req.__('rental.form.edit.pageTitle'),
+                btnLabel: req.__('rental.form.edit.btnLabel'),
                 formAction: '/rentals/edit',
                 navLocation: 'rentalNav',
                 validationErrors: []
@@ -83,7 +83,7 @@ exports.showRentalDetails = (req, res, next) => {
                 allCustomers: allCustomers,
                 allBikes: allBikes,
                 formMode: 'showDetails',
-                pageTitle: 'Szczegóły wypożyczenia',
+                pageTitle: req.__('rental.form.details.pageTitle'),
                 formAction: '',
                 navLocation: 'rentalNav',
                 validationErrors: []
@@ -111,8 +111,8 @@ exports.addRental = (req, res, next) => {
                     allCustomers: allCustomers,
                     allBikes: allBikes,
                     formMode: 'createNew',
-                    pageTitle: 'Nowe wypożyczenie',
-                    btnLabel: 'Dodaj wypożyczenie',
+                    pageTitle: req.__('rental.form.add.pageTitle'),
+                    btnLabel: req.__('rental.form.add.btnLabel'),
                     formAction: '/rentals/add',
                     navLocation: 'rentalNav',
                     validationErrors: err.errors
@@ -145,8 +145,8 @@ exports.updateRental = (req, res, next) => {
                         allCustomers: allCustomers,
                         allBikes: allBikes,
                         formMode: 'edit',
-                        pageTitle: 'Edycja wypożyczenia',
-                        btnLabel: 'Edytuj wypożyczenie',
+                        pageTitle: req.__('rental.form.edit.pageTitle'),
+                        btnLabel: req.__('rental.form.edit.btnLabel'),
                         formAction: '/rentals/edit',
                         navLocation: 'rentalNav',
                         validationErrors: err.errors
@@ -167,8 +167,8 @@ exports.deleteRental = (req, res, next) => {
             res.render('pages/rental/form', {
                 rental: rentalData,
                 formMode: 'delete',
-                pageTitle: 'Usuwanie wypożyczenia',
-                btnLabel: 'Usuń wypożyczenie',
+                pageTitle: req.__('rental.form.delete.pageTitle'),
+                btnLabel: req.__('rental.form.delete.btnLabel'),
                 formAction: '/rentals/delete',
                 navLocation: 'rentalNav',
                 validationErrors: []

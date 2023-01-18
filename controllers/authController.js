@@ -10,7 +10,7 @@ exports.login = (req, res, next) => {
             if(!customer) {
                 res.render('index', {
                     navLocation: '',
-                    loginError: "Nieprawidłowy adres e-mail lub hasło"
+                    loginError: req.__('validationMessage.loginError')
                 })
             } else if (authUtil.comparePasswords(password, customer.Password)) {
                 req.session.loggedUser = customer;
@@ -18,7 +18,7 @@ exports.login = (req, res, next) => {
             } else {
                 res.render('index', {
                     navLocation: '',
-                    loginError: "Nieprawidłowy adres e-mail lub hasło"
+                    loginError: req.__('validationMessage.loginError')
                 })
             }
         })

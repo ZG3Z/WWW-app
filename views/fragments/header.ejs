@@ -10,19 +10,19 @@
     <body>
         <% if(!loggedUser) { %>
             <div id="'login">
-                <h3>Logowanie</h3>
+                <h3><%= __('register.log') %></h3>
                 <form class="form-buttons" method="post" action="/login" novalidate>
-                    <label for="LoginEmail">Email:</label>
+                    <label for="LoginEmail"><%= __('register.email') %>:</label>
                     <input type="email" id="LoginEmail" name="LoginEmail">
-                    <label for="LoginPassword">Hasło:</label>
+                    <label for="LoginPassword"><%= __('register.password') %>:</label>
                     <input type="password" id="LoginPassword" name="LoginPassword">
-                    <input type="submit" value="Zaloguj się">
+                    <input type="submit" value="<%= __('register.loginBtn') %>">
                     <span class="errors-text" id="loginErrors"><%= loginError ? loginError : ''%></span>
                 </form>
             </div>
         <% } else { %>
-            <span>Jesteś zalogowany jako: <%=loggedUser.Name + " " + loggedUser.Surname%></span>
-            <a href="/logout">Wyloguj się</a>
+            <span><%= __('register.loggedAs') %>: <%=loggedUser.Name + " " + loggedUser.Surname%></span>
+            <a href="/logout"><%= __('register.logout') %></a>
         <% } %>        
         <header>
             <h1>RBike</h1>
@@ -31,10 +31,10 @@
         <% if(loggedUser) { %>
         <nav>
             <ul>
-                <li><a href="/" class="<%- navLocation == "mainNav" ? 'active' : ''%>">Strona główna</a></li>
-                <li><a href="/customers" class="<%- navLocation == "customerNav" ? 'active' : ''%>">Klienci</a></li>
-                <li><a href="/bikes" class="<%- navLocation == "bikeNav" ? 'active' : ''%>">Rowery</a></li>
-                <li><a href="/rentals" class="<%- navLocation == "rentalNav" ? 'active' : ''%>">Wypożyczenia</a></li>
+                <li><a href="/" class="<%- navLocation == "mainNav" ? 'active' : ''%>"><%= __('nav.main-page') %></a></li>
+                <li><a href="/customers" class="<%- navLocation == "customerNav" ? 'active' : ''%>"><%= __('nav.customers') %></a></li>
+                <li><a href="/bikes" class="<%- navLocation == "bikeNav" ? 'active' : ''%>"><%= __('nav.bikes') %></a></li>
+                <li><a href="/rentals" class="<%- navLocation == "rentalNav" ? 'active' : ''%>"><%= __('nav.rentals') %></a></li>
             </ul>
         </nav>
         <% } %>

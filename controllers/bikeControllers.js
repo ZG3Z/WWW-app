@@ -13,9 +13,9 @@ exports.showBikeList = (req, res, next) => {
 exports.showAddBikeForm = (req, res, next) => {
     res.render('pages/bike/form', {
         bike: {},
-        pageTitle: 'Nowy rower',
+        pageTitle: req.__('bike.form.add.pageTitle'),
         formMode: 'createNew',
-        btnLabel: 'Dodaj rower',
+        btnLabel: req.__('bike.form.add.btnLabel'),
         formAction: '/bikes/add',
         navLocation: 'bikeNav',
         validationErrors: []
@@ -29,8 +29,8 @@ exports.showEditBikeForm = (req, res, next) => {
             res.render('pages/bike/form', {
                 bike: bike,
                 formMode: 'edit',
-                pageTitle: 'Edycja roweru',
-                btnLabel: 'Edytuj rower',
+                pageTitle: req.__('bike.form.edit.pageTitle'),
+                btnLabel: req.__('bike.form.edit.btnLabel'),
                 formAction: '/bikes/edit',
                 navLocation: 'bikeNav',
                 validationErrors: []
@@ -46,7 +46,7 @@ exports.showBikeDetails = (req, res, next) => {
             res.render('pages/bike/form', {
                 bike: bike,
                 formMode: 'showDetails',
-                pageTitle: 'Szczegóły roweru',
+                pageTitle: req.__('bike.form.details.pageTitle'),
                 formAction: '',
                 navLocation: 'bikeNav',
                 validationErrors: []
@@ -63,9 +63,9 @@ exports.addBike = (req, res, next) => {
         .catch(err => {
             res.render('pages/bike/form', {
                 bike: bikeData,
-                pageTitle: 'Nowy rower',
+                pageTitle: req.__('bike.form.add.pageTitle'),
                 formMode: 'createNew',
-                btnLabel: 'Dodaj rower',
+                btnLabel: req.__('bike.form.add.btnLabel'),
                 formAction: '/bikes/add',
                 navLocation: 'bikeNav',
                 validationErrors: err.errors
@@ -85,8 +85,8 @@ exports.updateBike = (req, res, next) => {
             res.render('pages/bike/form', {
                 bike: bikeData,
                 formMode: 'edit',
-                pageTitle: 'Edycja roweru',
-                btnLabel: 'Edytuj rower',
+                pageTitle: req.__('bike.form.edit.pageTitle'),
+                btnLabel: req.__('bike.form.edit.btnLabel'),
                 formAction: '/bikes/edit',
                 navLocation: 'bikeNav',
                 validationErrors: err.errors
@@ -107,8 +107,8 @@ exports.deleteBike = (req, res, next) => {
             res.render('pages/bike/form', {
                 bike: bikeData,
                 formMode: 'delete',
-                pageTitle: 'Usuwanie roweru',
-                btnLabel: 'Usuń rower',
+                pageTitle: req.__('bike.form.delete.pageTitle'),
+                btnLabel: req.__('bike.form.delete.btnLabel'),
                 formAction: '/bikes/delete',
                 navLocation: 'bikeNav',
                 validationErrors: []

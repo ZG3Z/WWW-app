@@ -4,56 +4,59 @@
         <script type="application/javascript" src="/js/validationCommon.js"></script>
         <script type="application/javascript" src="/js/validationBikeForm.js"></script>
         <h2><%= pageTitle%></h2>
-        <form class="form" method="post" action="<%=formAction%>" novalidate><!--onsubmit="return validateForm();" -->
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();" >
             <input type="hidden" name="ID_bike" value="<%= bike.ID_bike %>">
-            <label for="Brand">Marka: <span class="symbol-required">*</span></label>
-            <input type="text" name="Brand" id="Brand" placeholder="2-60 znaków" value="<%= bike.Brand %>" 
+            <label for="Brand"><%= __('bike.fields.Brand') %>: <span class="symbol-required">*</span></label>
+            <input type="text" name="Brand" id="Brand" placeholder="<%= __('validationMessage.specificError') %>" value="<%= bike.Brand %>" 
                 <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
-            <span id="errorBrand" class="errors-text">
-                <% if (validationErrors.find(e=> e.path.includes('Brand'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('Brand')).message %>
-                <% } %>
-            </span>
-            <label for="Model">Model: <span class="symbol-required">*</span></label>
-            <input type="text" name="Model" id="Model" placeholder="2-60 znaków" value="<%= bike.Model %>" 
+            <div>    
+                <span style="display: none" class="errors-text" id="errorMessage-required-brand"><%= __('validationMessage.fieldRequired') %></span>
+                <span style="display: none" class="errors-text" id="errorMessage-specific-brand"><%= __('validationMessage.specificError') %></span>
+                <span id="errorBrand" class="errors-text"></span>    
+            </div>
+            <label for="Model"><%= __('bike.fields.Model') %>: <span class="symbol-required">*</span></label>
+            <input type="text" name="Model" id="Model" placeholder="<%= __('validationMessage.specificError') %>" value="<%= bike.Model %>" 
                 <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
-            <span id="errorModel" class="errors-text">
-                <% if (validationErrors.find(e=> e.path.includes('Model'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('Model')).message %>
-                <% } %>
-            </span>
-            <label for="Colour">Kolor: <span class="symbol-required">*</span></label>
-            <input type="text" name="Colour" id="Colour" placeholder="2-30 znaków" value="<%= bike.Colour %>" 
+            <div>    
+                <span style="display: none" class="errors-text" id="errorMessage-required-model"><%= __('validationMessage.fieldRequired') %></span>
+                <span style="display: none" class="errors-text" id="errorMessage-specific-model"><%= __('validationMessage.specificError') %></span>
+                <span id="errorModel" class="errors-text"></span>    
+            </div>
+            <label for="Colour"><%= __('bike.fields.Colour') %>: <span class="symbol-required">*</span></label>
+            <input type="text" name="Colour" id="Colour" placeholder="<%= __('validationMessage.specificError') %>" value="<%= bike.Colour %>" 
                 <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
-            <span id="errorColour" class="errors-text">
-                <% if (validationErrors.find(e=> e.path.includes('Colour'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('Colour')).message %>
-                <% } %>
-            </span>
+            <div>    
+                <span style="display: none" class="errors-text" id="errorMessage-required-colour"><%= __('validationMessage.fieldRequired') %></span>
+                <span style="display: none" class="errors-text" id="errorMessage-specific-colour"><%= __('validationMessage.specificError') %></span>
+                <span id="errorColour" class="errors-text"></span>    
+            </div>
 
             <% if (formMode == 'showDetails') { %>
                 <div>
-                    <a class="list-actions-button-edit" href="/bikes/edit/<%=bike.ID_bike%>">Edytuj</a>
+                    <a class="list-actions-button-edit" href="/bikes/edit/<%=bike.ID_bike%>"><%= __('form.actions.edit') %></a>
                 </div>
             <% } %>
             <div class="form-buttons">
-                <p id="errorsSummary" class="errors-text"></p>
+                <div> 
+                    <span style="display: none" class="errors-text" id="errorMessage-summary"><%= __('validationMessage.errorsSummary') %></span>
+                    <span id="errorsSummary" class="errors-text"></p>
+                </div>
                 <% if (formMode != 'showDetails') { %>
                     <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-                    <a class="form-button-cancel" href="/bikes">Anuluj</a>
+                    <a class="form-button-cancel" href="/bikes"><%= __('form.actions.cancel') %></a>
                 <% } else { %>
-                    <a class="form-button-cancel" href="/bikes">Powrót</a>
+                    <a class="form-button-cancel" href="/bikes"><%= __('form.actions.return') %></a>
                 <% } %>
             </div>
         </form>
         <% if (formMode == 'showDetails') { %>
-            <h2>Szczegóły wypożyczeń</h2>
+            <h2><%= __('bike.form.rental') %></h2>
             <table class="table-list">
                 <thead>
                     <tr>
-                        <th>Dane osoby wypożyczającej</th>
-                        <th>Data od</th>
-                        <th>Data do</th>
+                        <th><%= __('rental.fields.Customer_ID_customer') %></th>
+                        <th><%= __('rental.fields.Date_from') %></th>
+                        <th><%= __('rental.fields.Date_to') %></th>
                     </tr>
                 </thead>
                 <tbody>

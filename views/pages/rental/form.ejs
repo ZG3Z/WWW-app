@@ -5,12 +5,12 @@
         <script type="application/javascript" src="/js/validationRentalForm.js"></script>
         <h2><%= pageTitle%></h2>
         
-        <form class="form" method="post" action="<%=formAction%>" novalidate> <!-- onsubmit="return validateFormRent();"  -->
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
             <input type="hidden" name="ID_rental" value="<%= rental.ID_rental %>">
-            <label for="Customer_ID_customer">Imię i nazwisko: <span class="symbol-required">*</span></label>
-            <select id="Customer_ID_customer" name="Customer_ID_customer"  required class="<%= validationErrors.find(e=>e.path.includes('Customer_ID_customer')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled' : ''%> >
+            <label for="Customer_ID_customer"><%= __('rental.fields.Customer_ID_customer') %>: <span class="symbol-required">*</span></label>
+            <select id="Customer_ID_customer" name="Customer_ID_customer">
                 <% if (formMode !='edit' ){ %>
-                    <option value="" selected="selected">--Wybierz osobę wypożyczającą--</option>
+                    <option value="" selected="selected"><%= __('placeholer.selectPerson') %></option>
                 <% } %>
                 <% for (let i=0; i<allCustomers.length; i++) {let customer=allCustomers[i]; %>
                     <option value="<%= customer.ID_customer %>" label="<%= customer.Name + ' ' + customer.Surname %>"
@@ -18,68 +18,67 @@
                     </option>
                 <% } %>
             </select>
-            <span id="errorCustomer_ID_customer" class="errors-text">
-                <% if (validationErrors.find(e=> e.path.includes('Customer_ID_customer'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('Customer_ID_customer')).message %>
-                <% } %>
-            </span>
-            <label for="Bike_ID_bike">Model i marka: <span class="symbol-required">*</span></label>
-            <select id="Bike_ID_bike" name="Bike_ID_bike" required class="<%=validationErrors.find(e=>e.path.includes('Bike_ID_bike')) ? 'error-input' : '' %>" <%=(formMode=='showDetails' ) ? 'disabled': '' %> >
+            <div>    
+                <span style="display: none" class="errors-text" id="errorMessage-required-customer"><%= __('validationMessage.fieldRequired') %></span>
+                <span id="errorCustomer_ID_customer" class="errors-text"></span>    
+            </div>
+            <label for="Bike_ID_bike"><%= __('rental.fields.Bike_ID_bike') %>: <span class="symbol-required">*</span></label>
+            <select id="Bike_ID_bike" name="Bike_ID_bike" >
                 <% if (formMode !='edit' ){ %>
-                    <option value="" selected="selected">--Wybierz wypożyczony rower--</option>
+                    <option value="" selected="selected"><%= __('placeholer.selectBike') %></option>
                 <% } %>
                 <%for (let i=0; i<allBikes.length; i++) {let bike=allBikes[i]; %>
                     <option value="<%= bike.ID_bike %>" label="<%=bike.Brand + ' ' + bike.Model%>"
                         <%=(rental.ID_rental && bike.ID_bike.toString()==rental.Bike.ID_bike.toString()) ? 'selected' : '' %>></option>
                 <% } %>
             </select>
-            <span id="errorBike_ID_bike" class="errors-text">
-                <% if (validationErrors.find(e=> e.path.includes('Bike_ID_bike'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('Bike_ID_bike')).message %>
-                <% } %>
-            </span>
-            <label for="Date_from">Data od: <span class="symbol-required">*</span></label>
-            <input type="date" name="Date_from" id="Date_from" value="<%= (formMode=='createNew') ? '': rental.Date_from.toISOString().split('T')[0] %>" class="<%= validationErrors.find(e=>e.path.includes('Date_from')) ? 'error-input' : '' %>"
+            <div>    
+                <span style="display: none" class="errors-text" id="errorMessage-required-bike"><%= __('validationMessage.fieldRequired') %></span>
+                <span id="errorBike_ID_bike" class="errors-text"></span>    
+            </div>
+            <label for="Date_from"><%= __('rental.fields.Date_from') %>: <span class="symbol-required">*</span></label>
+            <input type="date" name="Date_from" id="Date_from" value="<%= (formMode=='createNew') ? '': rental.Date_from.toISOString().split('T')[0] %>"
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
-                <span id="errorDate_from" class="errors-text">
-                <% if (validationErrors.find(e=> e.path.includes('Date_from'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('Date_from')).message %>
-                <% } %>
-            </span>
-            <label for="Date_to">Data do: <span class="symbol-required">*</span></label>
-            <input type="date" name="Date_to" id="Date_to" value="<%= (formMode=='createNew') ? '': rental.Date_to.toISOString().split('T')[0] %>" class="<%= validationErrors.find(e=>e.path.includes('Date_to')) ? 'error-input' : '' %>"
+            <div>    
+                <span style="display: none" class="errors-text" id="errorMessage-required-datefrom"><%= __('validationMessage.fieldRequired') %></span>
+                <span id="errorDate_from" class="errors-text"></span>    
+            </div>
+            <label for="Date_to"><%= __('rental.fields.Date_to') %>: <span class="symbol-required">*</span></label>
+            <input type="date" name="Date_to" id="Date_to" value="<%= (formMode=='createNew') ? '': rental.Date_to.toISOString().split('T')[0] %>" 
                 <%=(formMode=='showDetails' ) ? 'disabled' : '' %> />
-            <span id="errorDate_to" class="errors-text">
-                <% if (validationErrors.find(e=> e.path.includes('Date_to'))) { %>
-                    <%= validationErrors.find(e=> e.path.includes('Date_to')).message %>
-                <% } %>
-            </span>
+            <div>    
+                <span style="display: none" class="errors-text" id="errorMessage-required-dateto"><%= __('validationMessage.fieldRequired') %></span>
+                <span id="errorDate_to" class="errors-text"></span>    
+            </div>
                 
             
             <% if (formMode == 'showDetails') { %>
                 <div>
-                    <a class="list-actions-button-edit" href="/rentals/edit/<%=rental.ID_rental%>">Edytuj</a>
+                    <a class="list-actions-button-edit" href="/rentals/edit/<%=rental.ID_rental%>"><%= __('form.actions.edit') %></a>
                 </div>
             <% } %>
             <div class="form-buttons">
-                <p id="errorsSummary" class="errors-text"></p>
+                <div> 
+                    <span style="display: none" class="errors-text" id="errorMessage-summary"><%= __('validationMessage.errorsSummary') %></span>
+                    <span id="errorsSummary" class="errors-text"></p>
+                </div>
                 <% if (formMode != 'showDetails') { %>
                     <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
-                    <a class="form-button-cancel" href="/rentals">Anuluj</a>
+                    <a class="form-button-cancel" href="/rentals"><%= __('form.actions.cancel') %></a>
                 <% } else { %>
-                    <a class="form-button-cancel" href="/rentals">Powrót</a>
+                    <a class="form-button-cancel" href="/rentals"><%= __('form.actions.return') %></a>
                 <% } %>
             </div>
         </form>
         <% if (formMode == 'showDetails') { %>
-            <h3>Szczegóły klienta</h3>
+            <h3><%= __('rental.form.customer') %></h3>
             <div>
                 <table class="table-list">
                     <thead>
                         <tr>
-                            <th>Imię i nazwisko</th>
-                            <th>Telefon</th>
-                            <th>E-mail</th>
+                            <th><%= __('rental.fields.Customer_ID_customer') %></th>
+                            <th><%= __('customer.fields.Telephone') %></th>
+                            <th><%= __('customer.fields.Email') %></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,13 +90,13 @@
                     </tbody>
                 </table>
             </div>
-            <h3>Szczegóły roweru</h3>
+            <h3><%= __('rental.form.bike') %></h3>
             <div>
                 <table class="table-list">
                     <thead>
                         <tr>
-                            <th>Marka i model</th>
-                            <th>Kolor</th>
+                            <th><%= __('rental.fields.Bike_ID_bike') %></th>
+                            <th><%= __('bike.fields.Colour') %></th>
                         </tr>
                     </thead>
                     <tbody>

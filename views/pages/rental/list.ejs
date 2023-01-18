@@ -1,15 +1,15 @@
 <%- include('../../fragments/header.ejs')%>
 
     <main>
-        <h2>Lista wypożyczeń</h2>
+        <h2><%= __('rental.list.pageTitle') %></h2>
         <table class="table-list">
             <thead>
                 <tr>
-                    <th>Imię i nazwisko</th>
-                    <th>Marka i model</th>
-                    <th>Data od</th>
-                    <th>Data do</th>
-                    <th>Akcje</th>
+                    <th><%= __('rental.fields.Customer_ID_customer') %></th>
+                    <th><%= __('rental.fields.Bike_ID_bike') %></th>
+                    <th><%= __('rental.fields.Date_from') %></th>
+                    <th><%= __('rental.fields.Date_to') %></th>
+                    <th><%= __('list.actions.title') %></th>
                 </tr>
             </thead>
             <% for (let rental of rentals) { %>    
@@ -20,16 +20,16 @@
                     <td><%= rental.Date_to.toISOString().split('T')[0] %></td>
                     <td>
                         <ul class="list-actions">
-                            <li><a href="/rentals/details/<%=rental.ID_rental%>" class="list-actions-button-details">Szczegóły</a></li>
-                            <li><a href="/rentals/edit/<%=rental.ID_rental%>" class="list-actions-button-edit">Edytuj</a></li>
-                            <li><a href="/rentals/delete/<%=rental.ID_rental%>" class="list-actions-button-delete">Usuń</a></li>
+                            <li><a href="/rentals/details/<%=rental.ID_rental%>" class="list-actions-button-details"><%= __('list.actions.details') %></a></li>
+                            <li><a href="/rentals/edit/<%=rental.ID_rental%>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a></li>
+                            <li><a href="/rentals/delete/<%=rental.ID_rental%>" class="list-actions-button-delete"><%= __('list.actions.delete') %></a></li>
                         </ul>
                     </td>
                 </tr>
             <% } %>    
             </tbody>
        </table>
-    <p><a href="/rentals/add" class="button-add">Dodaj nowe wypożyczenie</a></p>
+    <p><a href="/rentals/add" class="button-add"><%= __('rental.list.addNew') %></a></p>
     </main>
 
 <%- include('../../fragments/footer.ejs')%>
