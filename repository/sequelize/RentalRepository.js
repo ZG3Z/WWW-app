@@ -35,7 +35,8 @@ exports.createRental = (data) => {
         Customer_ID_customer: data.Customer_ID_customer,
         Bike_ID_bike: data.Bike_ID_bike,
         Date_from: data.Date_from,
-        Date_to: data.Date_to
+        Date_to: data.Date_to,
+        Equipment: data.Equipment
     });
 };
 

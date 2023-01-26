@@ -1,0 +1,275 @@
+{
+	"main-page": {
+		"content": "Strona główna",
+		"text": "Firma Rbike jest firmą wypożyczająca rowery, która potrzebuje aplikacji zarządzającej wypożyczaniem rowerów. Chcemy pamiętać każdego klienta, rower oraz informacje o wypożyczeniu."
+	},
+	"nav": {
+		"main-page": "Strona główna",
+		"customers": "Klienci",
+		"bikes": "Rowery",
+		"rentals": "Wypożyczenia",
+		"accessories": "Akcesoria",
+		"equipments": "Wyposażenia"
+	},
+	"list": {
+		"actions": {
+			"title": "Akcje",
+			"details": "Szczegóły",
+			"edit": "Edytuj",
+			"delete": "Usuń"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Powrót",
+			"edit": "Edytuj",
+			"cancel": "Anuluj",
+			"logout": "Wyloguj",
+			"login": "Zaloguj"
+		},
+		"validation": {
+			"messages": {
+				"notEmpty": "Pole jest wymagane",
+				"len_2_60": "Pole powinno zawierać od 2 do 60 znaków",
+				"len_5_60": "Pole powinno zawierać od 5 do 60 znaków",
+				"emailError": "Niepoprawny adres email",
+				"telephoneError": "Niepoprawny numer telefonu",
+				"formErrors": "Formularz zawiera błędy"
+			}
+		}
+	},
+	"customer": {
+		"fields": {
+			"Name": "Imię",
+			"Surname": "Nazwisko",
+			"Telephone": "Telefon",
+			"Email": "Email",
+			"Password": "Hasło"
+		},
+		"list": {
+			"title": "Klienci",
+			"addNew": "Dodaj nowego klienta",
+			"noData": "Brak klientów w bazie",
+			"pageTitle": "Lista klientów"
+		},
+		"form": {
+			"rental": "Historia wynajmu",
+			"add": {
+				"pageTitle": "Rejestracja",
+				"btnLabel": "Zarejestruj",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano klienta"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja klienta",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano klienta"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły klienta"
+			},
+			"delete": {
+				"pageTitle": "Usuwanie klienta",
+				"btnLabel": "Usuń klienta"
+			},
+			"placeholders":{
+				"2-60": "2-60 znaków",
+				"telephone": "+48 #########",
+				"email": "np. nazwa@domena.pl",
+				"password": "********"
+			}
+		}
+	},
+	"bike": {
+		"fields": {
+			"Brand": "Marka",
+			"Model": "Model",
+			"Colour": "Kolor"
+		},
+		"list": {
+			"title": "Rowery",
+			"addNew": "Dodaj nowy rower",
+			"noData": "Brak rowerów w bazie",
+			"pageTitle": "Lista rowerów"
+		},
+		"form": {
+			"rental": "Historia wynajmu",
+			"equipment": "Wyposażenie",
+			"add": {
+				"pageTitle": "Dodawanie roweru",
+				"btnLabel": "Dodaj rower",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano rower"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja roweru",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano rower"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły roweru"
+			},
+			"delete": {
+				"pageTitle": "Usuwanie roweru",
+				"btnLabel": "Usuń rower"
+			},
+			"placeholders":{
+				"2-60": "2-60 znaków"
+			}
+		}
+	},
+	"rental": {
+		"fields": {
+			"Customer_ID_customer": "Imię i nazwisko",
+			"Bike_ID_bike": "Marka i model",
+			"Date_from": "Data od",
+			"Date_to": "Data do",
+			"Equipment": "Wyposażenie"
+		},
+		"list": {
+			"title": "Wypożyczenia",
+			"addNew": "Dodaj nowe wypożyczenie",
+			"noData": "Brak wypożyczeń w bazie",
+			"pageTitle": "Lista wypożyczeń"
+		},
+		"form": {
+			"customer": "Szczegóły klienta",
+			"bike": "Szczegóły roweru",
+			"add": {
+				"pageTitle": "Dodawanie wypożyczenia",
+				"btnLabel": "Dodaj wypożyczenie",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano wypożyczenie"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja wypożyczenia",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano wypożyczenie"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły wypożyczenia"
+			},
+			"delete": {
+				"pageTitle": "Usuwanie wypożyczenia",
+				"btnLabel": "Usuń wypożyczenie"
+			},
+			"placeholers": {
+				"selectPerson": "--Wybierz osobę wypożyczającą--",
+				"selectBike": "--Wybierz wypożyczony rower--"
+			}
+		}
+	},
+	"accessory": {
+		"fields": {
+			"Name": "Nazwa"
+		},
+		"list": {
+			"title": "Akcesoria",
+			"addNew": "Dodaj nowe akcesoria",
+			"noData": "Brak akcesoriów w bazie",
+			"pageTitle": "Lista akcesorii"
+		},
+		"form": {
+			"equipment": "Wyposażenie",
+			"add": {
+				"pageTitle": "Dodawanie akcesorii",
+				"btnLabel": "Dodaj",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja akcesorii",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły akcesorii"
+			},
+			"delete": {
+				"pageTitle": "Usuwanie",
+				"btnLabel": "Usuń"
+			},
+			"placeholders":{
+				"2-60": "2-60 znaków"
+			}
+		}
+	},
+	"equipment": {
+		"fields": {
+			"Bike_ID_bike": "Rower",
+			"Accessory_ID_accessory": "Akcesoria"
+		},
+		"list": {
+			"title": "Wyposażenia",
+			"addNew": "Dodaj nowego wyposażenie",
+			"noData": "Brak Wyposażeń w bazie",
+			"pageTitle": "Lista wyposażeń"
+		},
+		"form": {
+			"bike": "Szczegóły roweru",
+			"accessory": "Szczegóły akcesorii",
+			"add": {
+				"pageTitle": "Dodawanie wyposażenia",
+				"btnLabel": "Dodaj wyposażenie",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano wyposażenie"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja wyposażenia",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano wyposażenie"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły wyposażenia"
+			},
+			"delete": {
+				"pageTitle": "Usuwanie wyposażenia",
+				"btnLabel": "Usuń wyposażenie"
+			}
+		}
+	},
+	"validationMessage": {
+		"fieldRequired": "Pole jest wymagane",
+		"emailError": "Niepoprawny email",
+		"errorsSummary": "Formularz zawiera błedy",
+		"specificError": "2-60 znaków",
+		"passwordRequired": "Hasło jest wymagane",
+		"telephoneError": "Niepoprawny numer telefonu",
+		"loginError": "Nieprawidłowy adres e-mail lub hasło"
+	},
+	"register": {
+		"register": "Zarejestruj się",
+		"loggedAs": "Jesteś zalogowany jako",
+		"logout": "Wyloguj",
+		"login": "Logowanie",
+		"loginBtn": "Zaloguj się",
+		"log": "Logowanie",
+		"email": "Email",
+		"password": "Hasło"
+	}
+}

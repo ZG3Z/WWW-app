@@ -1,0 +1,275 @@
+{
+	"main-page": {
+		"content": "Main Page",
+        "text": "Rbike is a bike rental company that needs a bike rental management app. We want to remember every customer, bike and rental information."
+	},
+	"nav": {
+		"main-page": "Main page",
+		"customers": "Customers",
+		"bikes": "Bikes",
+		"rentals": "Rentals",
+		"accessories": "Accessories",
+		"equipments": "Equipments"
+	},
+    "list": {
+       "actions": {
+         "title": "Actions",
+         "details": "Details",
+         "edit": "Edit",
+         "delete": "Delete"
+       }
+    },
+    "form": {
+       "actions": {
+          "return": "Return",
+          "edit": "Edit",
+          "cancel": "Cancel",
+		  "logout": "Logout",
+		  "login": "Login"
+      },
+	  "validation": {
+		"messages": {
+			"notEmpty": "The field is required",
+			"len_2_60": "The field should contain from 2 to 60 characters",
+			"len_5_60": "The field should contain from 5 to 60 characters",
+			"emailError": "Valid email",
+			"telephoneError": "Valid phone number",
+			"formErrors": "The form contains errors"
+		}
+		}
+    },
+	"customer": {
+		"fields": {
+			"Name": "Name",
+			"Surname": "Surname",
+            "Telephone": "Telephone",
+			"Email": "Email",
+			"Password": "Password"
+		},
+		"list": {
+			"title": "Customers",
+			"addNew": "Add new customer",
+			"noData": "No customers in database",
+			"pageTitle": "List of customers"
+		},
+		"form": {
+			"rental": "History of rental",
+			"add": {
+				"pageTitle": "Registration",
+				"btnLabel": "Register",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new customer has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a customer",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The customer has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Customer details"
+			},
+			"delete": {
+				"pageTitle": "Removing customer",
+				"btnLabel": "Remove customer"
+			},
+			"placeholders":{
+				"2-60": "2-60 characters",
+				"telephone": "+48 #########",
+				"email": "e.g. name@domain.pl",
+				"password": "********"
+			}
+        }
+    },
+    "bike": {
+		"fields": {
+			"Brand": "Brand",
+			"Model": "Model",
+            "Colour": "Colour"
+		},
+		"list": {
+			"title": "Bikes",
+			"addNew": "Add new bike",
+			"noData": "No bikes in database",
+			"pageTitle": "List of bikes"
+		},
+		"form": {
+			"rental": "History of rental",
+			"equipment": "Equipment",
+			"add": {
+				"pageTitle": "Adding a new bike",
+				"btnLabel": "Add the bike",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new bike has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a bike",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The bike has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Bike details"
+			},
+			"delete": {
+				"pageTitle": "Removing bike",
+				"btnLabel": "Remove bike"
+			},
+			"placeholders":{
+				"2-60": "2-60 characters"
+			}
+        }
+    },
+    "rental": {
+		"fields": {
+			"Customer_ID_customer": "Name and surname",
+			"Bike_ID_bike": "Brand and model",
+            "Date_from": "Date from",
+			"Date_to": "Date to",
+			"Equipment": "Equipment"
+		},
+		"list": {
+			"title": "Rentals",
+			"addNew": "Add new rental",
+			"noData": "No rentals in database",
+			"pageTitle": "List of rentals"
+		},
+		"form": {
+			"customer": "History of customer",
+            "bike": "History of bike",
+			"add": {
+				"pageTitle": "Adding a new rental",
+				"btnLabel": "Add the rental",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new rental has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a rental",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The rental has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Rental details"
+			},
+			"delete": {
+				"pageTitle": "Removing rental",
+				"btnLabel": "Remove rental"
+			},
+			"placeholers": {
+				"selectPerson": "--Select the customer--",
+				"selectBike": "--Select the bike--"
+			}
+        }
+    },
+	"accessory": {
+		"fields": {
+			"Name": "Name"
+		},
+		"list": {
+			"title": "Accessories",
+			"addNew": "Add new accessory",
+			"noData": "No accessories in database",
+			"pageTitle": "List of accessories"
+		},
+		"form": {
+			"equipment": "Equipment",
+			"add": {
+				"pageTitle": "Adding a new accessory",
+				"btnLabel": "Add the accessory",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new accessory has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a accessory",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The accessory has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Accessory details"
+			},
+			"delete": {
+				"pageTitle": "Removing accessory",
+				"btnLabel": "Remove accessory"
+			},
+			"placeholders":{
+				"2-60": "2-60 characters"
+			}
+        }
+    },
+	"equipment": {
+		"fields": {
+			"Bike_ID_bike": "Bike",
+			"Accessory_ID_accessory": "Accessory"
+		},
+		"list": {
+			"title": "Equipment",
+			"addNew": "Add new equipment",
+			"noData": "No equipments in database",
+			"pageTitle": "List of equipments"
+		},
+		"form": {
+			"bike": "Bike details",
+			"accessory": "Accessory details",
+			"add": {
+				"pageTitle": "Adding a new equipment",
+				"btnLabel": "Add the equipment",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new equipment has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a equipment",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The equipment has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Equipment details"
+			},
+			"delete": {
+				"pageTitle": "Removing equipment",
+				"btnLabel": "Remove equipment"
+			}
+		}
+    },
+	"validationMessage": {
+		"fieldRequired": "Field is required",
+		"emailError": "Valid email",
+		"specificError": "2-60 characters",
+		"passwordRequired": "Password required",
+		"errorsSummary": "Form contains errors",
+		"telephoneError": "Valid phone number",
+		"loginError": "Invalid email address or password"
+	},
+	"register": {
+		"register": "Register",
+		"loggedAs": "You are logged as",
+		"logout": "Logout",
+		"log": "Login",
+		"login": "Login",
+		"email": "Email",
+		"password": "Password",
+		"loginBtn": "Login"
+	}
+}

@@ -23,6 +23,10 @@ const Rental = sequelize.define('Rental', {
     Date_to: {
         type: Sequelize.DATE,
         allowNull: false
+    },
+    Equipment: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
     }
 });
 
