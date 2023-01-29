@@ -5,7 +5,7 @@
 * [Roles](#roles)
 
 ##  Model 
-![topic](https://user-images.githubusercontent.com/102870734/215328656-1ea7c2ad-a959-4fbb-a593-8635e5e1fd9d.png)
+![topic](https://user-images.githubusercontent.com/102870734/215332688-69ab70aa-744d-487c-b569-18ea25faed13.png)
 
 ## Tabels
 
