@@ -9,10 +9,6 @@ const authApiRouter = require('./routes/api/AuthApiRoute');
 
 var indexRouter = require('./routes/index');
 
-var customerRouter = require('./routes/customerRoute');
-var bikeRouter = require('./routes/bikeRoute');
-var rentalRouter = require('./routes/rentalRoute');
-
 var customerApiController = require('./routes/api/CustomerApiRoute');
 var bikeApiController = require('./routes/api/BikeApiRoute');
 var rentalApiController = require('./routes/api/RentalApiRoute');
@@ -76,9 +72,6 @@ app.use((req, res, next) => {
 app.use('/api/auth', authApiRouter);
 
 app.use('/', indexRouter);
-app.use('/customers', authUtil.permitAuthenticatedUser, customerRouter);
-app.use('/bikes', authUtil.permitAuthenticatedUser, bikeRouter);
-app.use('/rentals', authUtil.permitAuthenticatedUser, rentalRouter);
 
 app.use('/api/customers', customerApiController);
 app.use('/api/bikes', bikeApiController);

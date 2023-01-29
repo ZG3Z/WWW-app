@@ -5,11 +5,7 @@ const LangController = require('../controllers/LangController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { navLocation: 'mainNav' });
+  res.render('index')
 });
-
-router.post('/login', AuthController.login);
-router.get('/logout', AuthController.logout);
-router.get('/changeLang/:lang', LangController.changeLang);
 
 module.exports = router;
