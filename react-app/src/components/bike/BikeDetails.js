@@ -58,6 +58,7 @@ export default function BikeDetails() {
                                 <td>{rentals.Customer.Email}</td>
                                 <td>{rentals.Date_from ? getFormattedDate(rentals.Date_from) : ""}</td>
                                 <td>{rentals.Date_to ? getFormattedDate(rentals.Date_to) : ""}</td>
+                                <td>{rentals.Equipment ? "X" : ""}</td>
                             </tr>
                     )}
                 </tbody>
@@ -81,7 +82,11 @@ export default function BikeDetails() {
                 </tbody>
             </table>
                 <div className="section-buttons">
+                    {isAuthenticatedAdmin() &&
+                    <>  
                     <p><Link to={`/equipments/add/${bike.ID_bike}`}  className="button-add">{t('equipment.form.add.btnLabel')}</Link></p>
+                    </>
+                    }
                     <p><Link to="/bikes"  className="list-actions-button-details">{t('form.actions.return')}</Link></p>
                 </div>
             </main>  

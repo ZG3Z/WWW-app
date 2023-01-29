@@ -33,6 +33,7 @@ export default function RentalDetails() {
             <p>{t('rental.fields.Bike_ID_bike')}: {rental.Bike?.Brand} {rental.Bike?.Model}</p>
             <p>{t('rental.fields.Date_from')}: {rental.Date_from ? getFormattedDate(rental.Date_from) : ""}</p>
             <p>{t('rental.fields.Date_to')}: {rental.Date_to ? getFormattedDate(rental.Date_to) : ""}</p>
+            <p>{t('rental.fields.Equipment')}: {rentals.Equipment ? "yes" : "no"}</p>
             <br></br>
             <h3>{t('rental.form.customer')}</h3>
             <table className="table-list">
