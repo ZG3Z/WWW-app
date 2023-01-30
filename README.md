@@ -1,11 +1,11 @@
 # Rbike - bike rental
 
-* [Model](#model)
+* [Model (ER)](#model)
 * [Tabels](#tabels)
-* [Roles](#roles)
+* [User roles](#user-roles)
 
 ##  Model 
-![topic](https://user-images.githubusercontent.com/102870734/215332688-69ab70aa-744d-487c-b569-18ea25faed13.png)
+![topic](https://user-images.githubusercontent.com/102870734/215524712-1b5e6ec1-4a57-4652-a491-feed0bf3945e.png)
 
 ## Tabels
 
@@ -50,7 +50,7 @@
 |  Bike_ID_bike           |  integer      |  yes       | Foreign key - table Bike      |
 |  Accessory_ID_accessory |  integer      |  yes       | Foreign key - table Accessory |
 
-## Roles
+## User roles
 
 *Unlogged user*
 * log in
